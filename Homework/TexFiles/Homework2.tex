@@ -1,0 +1,316 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\pagestyle{fancy}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{Math 521}
+\chead{Homework 2}
+\rhead{Meenmo Kang}
+
+\noindent
+\textbf{Question 2.1}\\
+A complex number $\z \in \;\mathbb{C}$ is said to be algebraic if there exists integers $a_0,...,a_n$ such that $$a_0z^n + a_1z^{n-1} + ... + a_{n-1}z + a_0 = 0$$
+Prove that the set of all algebraic numbers is countable. Hint: For every positive integer N,
+there are only finitely many equations with
+$$n + |a_0| + |a_1| + ... + |a_n| = N.$$
+\begin{itemize}
+    \item Suppose $S_N$ be the set of equations that are equal to a positive integer N.
+    \item Since there are only finitely many equations for a single N, as stated above, the collection of these equations, $S_N$, is at most countable. 
+    \item For each algebraic number $a_iz^{n-i}$, where $i_{\mathbb{Z}\ge 0}$, an equation for $S_N$ can be formed for some N.
+    \item Thus the set of all algebraic number is countable.\\
+\end{itemize}
+
+\noindent
+\textbf{Question 2.2}\\
+Prove that there exist real numbers that are not algebraic.
+\begin{itemize}
+    \item Suppose not. Assume there exists real numbers that are algebraic.
+    \item A set of algebraic number is countable, as we proved on the Question 2.1.
+    \item Hence the set of those real numbers is countable.  
+    \item This contradicts the statement we prove.\\
+    \end{itemize}
+
+\noindent
+\textbf{Question 2.3}\\
+Is the set of all irrational numbers countable?
+\begin{itemize}
+    \item No. 
+    
+    \\Because the set of all irrational numbers cannot be 1-1 paired with any countable set such as $\mathbb{Z}.$\\
+    
+    Or if the set of all irrational numbers is countable, then the set of all real number consists of irrational real and rational real numbers is countable, which is impossible.
+\end{itemize}
+
+\newpage
+\noindent
+\textbf{Question 2.4}\\
+Prove that each of the following distance functions $d: \mathbb{R}^2$ x $\mathbb{R}^2 \rightarrow \mathbb{R}$ on $\mathbb{R}^2$ define a metric.\\
+
+\noindent
+Recall the definition of metric space.
+\begin{enumerate}[label=(\roman*)]
+    \item d(p,q) $>$ 0 if $p\neq q$; d(p,p) = 0
+    \item d(p,q) = d(q,p)
+    \item d(p,q) $\le$ d(p,r) + d(r,p) \;\;$\forall\; r\in \mathbb{R}$.\\
+\end{enumerate}
+
+ 
+    $$
+        d(x,y) = 
+        \begin{cases}
+            |x-y| \qquad \text{if $x = \lambda y$, some $\lambda \; \in \mathbb{R}$}\\
+            |x| + |y| \quad\;\; \text{if $x \neq \lambda y$, for any $\lambda\;\in\mathbb{R}$}.\\
+        \end{cases}
+    $$
+    
+    \begin{itemize}
+        \item \text{if $x = \lambda y$}
+            \begin{enumerate}[label=(\roman*)]
+                \item By the definition of absolute value, $|x - y| \ge 0$\\
+                \Hence $d(x,y) = |x - y| > 0$ only and only if $x \neq y$.\\
+                Otherwise, in case of $x = y, d(x,y) = |x- y| = 0.$\\
+                \item $d(x,y) = |x - y| = |y - x| = d(y,x)$
+                \item $d(x,y) \le d(x,z) + d(z,y)\; \Leftrightarrow \; |x - y| \le |x - z| + |z - y|\;\;
+                \forall\; z \in X.$\\
+            \end{enumerate}
+            
+        \item \text{if $x \neq \lambda y$}
+            \begin{enumerate}[label=(\roman*)]
+                \item Then d(x,y) = $|x| + |y| > 0$
+                \item d(x,y) = $|x| + |y| = |y| + |x|$ = d(y,x)
+                \item d(x,y) = $|x| + |y| \le |x| + |z| + |z| + |y|\;\; \forall z \in \mathbb{R}$
+            \end{enumerate}
+    \end{itemize}
+    \indent
+        \quad\; Thus this is a metric space.\\
+    
+    
+\newpage
+ Writing x = $(x_1,x_2),$ y = $(y_1,y_2)$,
+    $$
+        d(x,y) = 
+        \begin{cases}
+            |x_2-y_2| \qquad\qquad\qquad\;\;\; \text{if}\;\; $x_1 = y_1$\\
+            |x_2| + |y_1 - x_1| +|y_2| \quad\;\; \text{if $x_1 \neq y_1$}
+        \end{cases}
+    $$
+
+\\
+
+    \begin{itemize}
+        \item \text{if $x_1 = y_1$}
+            \begin{enumerate}[label=(\roman*)]
+                \item d(x,y) = $|x_2 - y_2| > 0$ if and only if $x_2 \neq y_2$\
+                d(x,y) = 0 \qquad\qquad\quad if and only if $x_2 = y_2$
+                \item d(x,y) = $|x_2 - y_2| = |-1|\cdot |y_2 - x_2| = |y_2 - x_2|$ = d(y,x) 
+                \item d(x,y) = $|x_2 - y_2| = |x_2 - z_2 + z_2 - y_2| \le |x_2 - z_2| + |z_2 + y_2|\;\;\forall z_2 \in \mathbb{R}$
+            \end{enumerate}
+            
+        \item \text{if $x_1 \neq y_1$}
+            \begin{enumerate}[label=(\roman*)]
+               \item d(x,y) = $|x_2| + |y_1 - x_1| +|y_2| > |y_1 - x_1| > 0$\\
+               d(x,y) = 0 is not the case for this condition since $x_1 \neq y_1$
+               \item if d(x,y) = $|x_2| + |y_1 - x_1| +|y_2| = |y_2| + |x_1 - y_1| + |x_2| = |y_2| + |-1|\cdot |-x_1 + y_1| + |x_2|$\\
+               = $|y_2| + |y_1 - x_1| + |x_2| =$ d(y,x)
+               \item  
+               \begin{itemize}
+                   \item if $z_1 = x_1$ (or $z_1 = y_1$)\\
+                   d(x,z) + d(z,y) = $|x_2| + |y_1 - z_1| + |x_1 - z_1| + |y_2| \\
+                   = |x_2| + |y_1 - z_1| + |z_1 - x_2| + |y_2|\\
+                   \ge  |x_2| + |y_1 - z_1| + |x_2 - z_2 + y_2|\\ 
+                   = |x_2| + |y_1 - z_1| + |y_2|$\\
+                   
+                   \item if $x_1 \neq y_1 \neq z_1$\\
+                   d(x,z) + d(z,y) = $|x_2| + |z_1 - x_1| + |z_2| + |z_2| + |y_1 - z_1| + |y_2| \\
+                   \ge |x_2| + |y_1 - z_1| + |z_1 - x_1| + |y_2|\\
+                   \ge |x_2| + |y_1 - z_1 + z_1 - x_1| + |y_2| = |x_2| + |y_1 - x_1| + |y_2|\\ = $d(x,y)
+               \end{itemize}
+              
+
+            \end{enumerate}
+    \end{itemize}
+
+
+\newpage
+\noindent
+\textbf{Question 2.5}\\
+For each of the two metrics in Q2.4, find
+\begin{enumerate}[label=(\roman*)]
+    \item $B_{1/2}((1,1))$, that is the ball of radius 1/2 centered at (1,1).
+    
+    $\Rightarrow B_{\frac{1}{2}} = \{(x,y) \in \mathbb{R}^2\;|\; d\{(1,1), (x,y)\} < \frac{1}{2}\}$
+    
+    \begin{itemize}
+        \item 
+            $
+        d(x,y) = 
+        \begin{cases}
+            |x-y| \qquad \text{if $x = \lambda y$, some $\lambda \; \in \mathbb{R}$}\\
+            |x| + |y| \quad\;\; \text{if $x \neq \lambda y$, for any $\lambda\;\in\mathbb{R}$}.
+
+        \end{cases}
+        $\\
+        
+        
+        \begin{itemize}
+            \item \textbf{Case 1}: (x,y) = $\lambda(1,1)$\\
+            
+            d((1,1),(x,y)) = $|(1,1) - (x,y)|\\
+            = \sqrt{(x-1)^2 + (y-1)^2} < \frac{1}{2}$\\
+            $\Leftrightarrow (x-1)^2 + (y-1)^2 < \frac{1}{4}$\\
+            
+            \item \textbf{Case 2}: (x,y) $\neq \lambda(1,1)$\\
+            
+            d((0,1),(x,y)) = $|(1,1)| + |(x,y)|$\\
+            $= \sqrt{2} + \sqrt{x^2 + y^2} < \frac{1}{2} \Leftrightarrow \sqrt{x^2 + y^2} < \frac{1}{2} - \sqrt{2}$\\
+            $\Leftrightarrow x^2 + y^2 < (\frac{1}{2} - \sqrt{2})^2$\\
+            \\
+            
+        \end{itemize}\\
+        
+        
+    \item 
+    $
+        d(x,y) = 
+        \begin{cases}
+            |x_2-y_2| \qquad\qquad\qquad\;\;\; \text{if}\;\; $x_1 = y_1$\\
+            |x_2| + |y_1 - x_1| +|y_2| \quad\;\; \text{if $x_1 \neq y_1$}
+        \end{cases}
+    $
+    
+    \begin{itemize}
+        \item \textbf{Case 1}: $x_1 = 1$\\
+        
+        d((1,1),(x,y)) = $|y-1| < \frac{1}{2}\\ 
+        \;\Leftrightarrow\; -\frac{1}{2} < y - 1 < \frac{1}{2}$
+        $\; \Leftrightarrow\; \frac{1}{2} < y < \frac{3}{2}$\\
+        
+        \item \textbf{Case 2}: $x_1 \neq 1$\\
+        
+        d((1,1), (x,y)) = $|y| + |x-1| + |1| < \frac{1}{2}$\\
+        $|y| + |x-1| < -\frac{1}{2}$, which is impossible.
+    \end{itemize}
+    
+    \end{itemize}
+    
+    \newpage
+    \item $B_{2}\;\;((1,1))$, that is the ball of radius 2 centered at (1,1).
+    
+    $\Rightarrow B_{2}(1,1) = \{(x,y) \in \mathbb{R}^2\;|\; d\{(1,1), (x,y)\} < 2\}\\$
+    
+    \begin{itemize}
+        \item 
+            $
+        d(x,y) = 
+        \begin{cases}
+            |x-y| \qquad \text{if $x = \lambda y$, some $\lambda \; \in \mathbb{R}$}\\
+            |x| + |y| \quad\;\; \text{if $x \neq \lambda y$, for any $\lambda\;\in\mathbb{R}$}.
+
+        \end{cases}
+        $\\
+        
+        
+        \begin{itemize}
+            \item \textbf{Case 1}: (x,y) = $\lambda(1,1)$\\
+            
+            d((1,1),(x,y)) = $|(1,1) - (x,y)|\\
+            = \sqrt{(x-1)^2 + (y-1)^2} < 2$\\
+            $\Leftrightarrow (x-1)^2 + (y-1)^2 < 4$\\
+            
+            \item \textbf{Case 2}: (x,y) $\neq \lambda(1,1)$\\
+            
+            d((0,1),(x,y)) = $|(1,1)| + |(x,y)|$\\
+            $= \sqrt{2} + \sqrt{x^2 + y^2} < 2 
+            \Leftrightarrow \sqrt{x^2 + y^2} < 2 - \sqrt{2}$\\
+            $\Leftrightarrow x^2 + y^2 < (2 - \sqrt{2})^2$\\
+            \\
+            
+        \end{itemize}\\
+        
+        
+    \item 
+    $
+        d(x,y) = 
+        \begin{cases}
+            |x_2-y_2| \qquad\qquad\qquad\;\;\; \text{if}\;\; $x_1 = y_1$\\
+            |x_2| + |y_1 - x_1| +|y_2| \quad\;\; \text{if $x_1 \neq y_1$}
+        \end{cases}
+    $
+    
+    \begin{itemize}
+        \item \textbf{Case 1}: $x_1 = 1$\\
+        
+        d((1,1),(x,y)) = $|y-1| < 2\\ 
+        \;\Leftrightarrow\; -2 < y - 1 < 2$
+        $\; \Leftrightarrow\; -1 < y < 3$\\
+        
+        \item \textbf{Case 2}: $x_1 \neq 1$\\
+        
+        d((1,1), (x,y)) = $|y| + |x-1| + |1| < 2$\\
+        $|y| + |x-1| < 1$
+    \end{itemize}
+    
+    \end{itemize}
+\end{enumerate}
+
+\newpage
+\noindent
+\textbf{Question 2.6}\\
+ Prove that the set $\{(x,y) \in \mathbb{R}^2\;|\;y < |x|\}$ is open with respect to the Euclidean metric.\\
+ 
+\begin{itemize}
+    \item \textbf{Def}: Open Set\\
+    A subset $A$ of $R^n$ is said to be \textbf{open} (in $R^n$) if and only if for every $x \in A\;\; \exists\; \epsilon > 0$ such that $B_\epsilon (x) \subseteq A$.
+\end{itemize}
+
+
+
+
+ 
+ 
+\end{document}

@@ -1,0 +1,237 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{tasks}
+\pagestyle{fancy}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+\setlength{\parindent}{0pt}
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+ 
+\begin{document}
+\settasks{
+counter-format=(tsk[r]),
+label-width=4ex
+}
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{Math 521}
+\chead{Homework 5}
+\rhead{Meenmo Kang}
+
+
+\textbf{Question 5.1}
+\begin{enumerate}[label=(\roman*)]
+    \item Let $\a,\; x\in [\infty,\infty)$. Suppose that for all $\epsilon>0,$ we have that $x \le a+\epsilon$. Prove that $x\le a$.
+    \begin{itemize}
+        \item Suppose by contradiction that $x > a$.
+        \item Consider $\epsilon' > 0$ such that $x > a+\epsilon$, which contradicts to $x\le a+\epsilon'$.
+        \item Thus $x\le a$.
+    \end{itemize}
+    
+    \item Let $(x_n) \subset \mathbb{R}$ be such that $x_n \to x$ as $n \to\infty$ and, for all $n\in\mathbb{N},\; x_n \le a$. Prove that $x\le a$.
+
+    \begin{itemize}
+        \item Suppose by contradiction that $x>a$.
+        \item Suppose, further, $\exists\;\epsilon>0$ such that $x-\epsilon>a$. 
+        \item Since $x_n$ converges to $x$, $|x_n - x| <\epsilon$ if $\exists\; n$ such that $n\in\mathbb{N}.$
+        \item i.e. $x-\epsilon < x_n < x+\epsilon\;\Leftrightarrow\; a < x-\epsilon<x$, which is a contradiction to $x>a$ that we made.
+        \item Thus $x\le a$.
+    \end{itemize}
+    
+    \item Suppose now $x_n< a$ for all $n\in \mathbb{N}$ and $x_n \rightarrow x$. Is it true that $x<a$? Give a proof or counterexample.
+    \begin{itemize}
+        \item Assume $x_n = -\frac{1}{n}$ and $a = 0$.
+        \item $x_n$ is strictly lesser than 0, but $x_n$ converges to 0 which is $a$.
+    \end{itemize}
+    
+\end{enumerate}
+
+\vspace{1.5\baselineskip}
+
+\textbf{Question 5.2}\\
+Let $x_n = \sqrt{n}$ for all $n\in \mathbb{N}$.
+\begin{enumerate}[label=(\roman*)]
+    \item Prove $(x_{n+1} - x_n) \rightarrow 0$ as $n\rightarrow \infty$.
+        $$\lim_{n\rightarrow\infty} \left\{ (\sqrt{n+1}-\sqrt{n}) 
+        = (\sqrt{n+1}+\sqrt{n}) \cdot                 \frac{\sqrt{n+1}-\sqrt_n}{\sqrt{n+1}+\sqrt{n}} 
+        = \frac{\cancel{n}+1 - \cancel{n}}{\sqrt{n+1}-\sqrt{n}} 
+        = \frac{1}{\sqrt{n+1} - \sqrt{n}} \right\} = 0
+        $$
+        
+    \item Is $(x_n)$ a Cauchy sequence? Prove your answer.
+    \begin{itemize}
+        \item Recall the definition of Cauchy sequences.\\
+        $(x_n)$ is a Cauchy if for every $\epsilon>0$ there is an integer $N$ such that $d(p_n,p_m)<\epsilon$ if $n\ge N$ and $m\ge N$.
+        
+        \item For $m>n$ and $n=N$
+        $$
+        \sqrt{m} - \sqrt{n}
+        =\sqrt{m} - \sqrt{n} \cdot
+        \frac{\sqrt{m}+\sqrt{n}}{\sqrt{m}+\sqrt{n}}
+        = \frac{m-n}{\sqrt{m}+\sqrt{n}} 
+        \geq \frac{m-n}{2\sqrt{m}}
+        = \frac{\sqrt{m}}{2} - \frac{n}{2\sqrt{m}}
+        $$
+        
+        $$
+        > \frac{1}{2} - \frac{n}{2\sqrt{m}}
+        = \frac{1}{2} - \frac{N}{2\sqrt{m}}
+        > \frac{1}{2} > \epsilon
+        $$
+        
+        Since $m$ as an enough large number, $\frac{N}{2\sqrt{m}}$ would converge to 0 (where $N$ is a fixed natural number).
+        Thus we proved that $(x_n)$ is not a Cauchy sequence.
+    \end{itemize}
+\end{enumerate}
+
+
+\newpage
+\textbf{Question 5.3}
+\begin{enumerate}[label=(\roman*)]
+    \item Construct a sequence $(x_n)$ in $\mathbb{R}$ such that the set of subsequential limits of $(x_n)$ is the interval [0,1]. Is it possible to construct a sequence where the set of subsquential limits is (0,1)?\\
+    
+    Consider a sequence $(x_n)$
+    $\begin{cases}
+        x_{2^n} = 0\\
+        x_{2^n+k} = \frac{k}{2^n}
+    \end{cases}$
+    \begin{itemize}
+        \item $2^1 = 0$
+        \item $2^2 = 0,\;\;2^3 = \frac{1}{2},\;$
+        \item $2^4 = 0,\;\;2^5 = \frac{1}{4},\;\;2^6 = \frac{2}{4},\;\;2^7 = \frac{3}{4}$
+        \item $2^8 = 0,\;\;2^9 = \frac{1}{8},\;\;2^{10} = \frac{2}{8},\;\;2^{11} =              \frac{3}{8},\;\;2^{12}=\frac{4}{8},\;\;\ldots$
+    \end{itemize}
+    We can observe that the sequence $(x_n)$ is in the interval $[0,1]$.
+    
+    \vspace{1.5\baselineskip}
+    \item Let $E = \mathbb{Q} \cap [0,1]$. Find a sequence in $E$ that has no subsequence converging to a point of $E$. 
+    \begin{itemize}
+        \item Consider $x_n = \frac{1}{\left(1+\frac{1}{n}\right)^n}$ which is contained in $\in E$.
+        
+        \item As $n\to\infty,\; x_n\to \frac{1}{e}$ due to the fact that $e=\left(1+\frac{1}{n}\right)^n$.
+        
+        \item Since $e\in\mathbb{R}\setminus\mathbb{Q},\;\frac{1}{e}\in\mathbb{R}\setminus\mathbb{Q}$.
+    \end{itemize}
+\end{enumerate}
+
+
+\newpage
+\textbf{Question 5.4} \\
+Let $(x_n)$ and $(y_n)$ be sequences of real numbers. Prove that
+$$ 
+\limsup\limits_{n\rightarrow\infty} (x_n + y_n) \le
+\limsup\limits_{n\rightarrow\infty} (x_n) + \limsup\limits_{n\rightarrow\infty} (y_n).
+$$
+\begin{itemize}
+    \item We are considering the cases where both 
+    $\limsup\limits_{n\rightarrow\infty} (x_n),\;ㅌ \limsup\limits_{n\rightarrow\infty} (y_n)$ go to $\infty$.
+    
+    \vspace{0.05\baselineskip}
+    
+    i.e. $\exists$ an upper bound for $x_n,\; y_n$.
+    
+    \item Otherwise, in case where $\limsup\limits_{n\rightarrow\infty} (x_n) = +\infty$ and $\limsup\limits_{n\rightarrow\infty} (y_n) = -\infty$,\\
+    such that $x_n = (-1)^{2n},\; y_n=(-1)^{2n-1}$, $\limsup\limits_{n\rightarrow\infty} (x_n) + \limsup\limits_{n\rightarrow\infty} (y_n)=0$.
+    
+    \item Now assume that 
+    $x =\limsup\limits_{n\rightarrow\infty} (x_n) \in(-\infty,\infty),\; 
+    y=\limsup\limits_{n\rightarrow\infty} (y_n) \in(-\infty,\infty).$\\
+    %i.e. $x+y= \limsup\limits_{n\rightarrow\infty} (x_n) + \limsup\limits_{n\rightarrow\infty} (y_n).$
+    
+    \item Then consider a subsequence of the natural numbers $\{n_k\}$ and $p\in\mathbb{R}$ such that 
+    $$\lim_{k \to \infty} (x_{n_k} +y_{n_k})\rightarrow p$$
+    
+\item Consider another subsequence of the natural number $\{n_{k_l}\}$ and $q,\;r\in\mathbb{R}$ such that 
+
+$$\lim_{k \to \infty} x_{n_{k_l}}\rightarrow q,\;\;
+\lim_{k \to \infty} y_{n_{k_l}}\rightarrow r
+$$
+
+\item Then we obtain $p=q+r$
+\item Since $x_{n_{k_l}}$ is a subsequence of $x_{n_k}$ and $x_{n_k}$ is  a subsequence of $x_n$,
+$$
+q+r = p \le
+\limsup\limits_{n\to\infty} x_n+
+\limsup\limits_{n\to\infty} y_n
+$$
+
+Thus we proved that 
+$$
+\limsup\limits_{n\to\infty} (x_n + y_n) \le
+\limsup\limits_{n\to\infty} x_n+
+\limsup\limits_{n\to\infty} y_n
+$$
+\end{itemize}
+
+\vspace{1.5\baselineskip}
+\textbf{Question 5.5} \\
+Construct sequences $(x_n), (y_n)$ of real numbers such that
+$$
+\limsup\limits_{n\rightarrow \infty} x_n = 
+\limsup\limits_{n\rightarrow \infty} y_n = 1, \quad
+\limsup\limits_{n\rightarrow \infty} (x_n +y_n) = 0
+$$
+
+\vspace{1.5\baselineskip}
+Suppose\\
+\hspace*{\fill}
+{$x_n = \{-1,1,-1,1,-1,\ldots\}$} \hfill {$y_n = \{1,-1,1,-1,1,\ldots\}$}
+\hspace*{\fill}
+
+\vspace{1.5\baselineskip}
+Then 
+$$
+\limsup\limits_{n\rightarrow \infty} x_n = 
+\limsup\limits_{n\rightarrow \infty} y_n = 1, \text{but }
+\limsup\limits_{n\rightarrow \infty} (x_n +y_n) = 0
+$$
+
+\newpage
+\textbf{Question 5.6}\\
+Find $\limsup\limits_{n\rightarrow \infty} x_n$ and $\limsup\limits_{n\rightarrow \infty} x_n$ for the sequence $(x_n)$ defined by $x_1 = 0$ and, for $m\le 1$,
+$$
+x_{2m} = \frac{x_{2m-1}}{2}, \quad
+x_{2m+1} = \frac{1}{2} + x_{2m}.
+$$
+
+\end{document}

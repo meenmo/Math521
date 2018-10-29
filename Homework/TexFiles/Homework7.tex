@@ -1,0 +1,133 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{tasks}
+\pagestyle{fancy}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+\setlength{\parindent}{0pt}
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+ 
+\begin{document}
+\settasks{
+counter-format=(tsk[r]),
+label-width=4ex
+}
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{Math 521}
+\chead{Homework 7}
+\rhead{Meenmo Kang}
+
+
+\textbf{Question 7.1}\\
+Let $f\colon X\rightarrow \mathbb{R}$ be a continuous function. Prove that the zero set of $f$, that is the set 
+$$\{x\inX\;|\;f(x)=0\}$$ is closed.
+\begin{itemize}
+    \item Note that the Corollary of Theorem 4.8 on Rudin states {\sl A mapping f of a metric space X into a metric space Y is continuous if and only if $f^{-1}(C)$ is closed in X for every closed set C in Y.}
+    \item Suppose $g(f) = f^{-1}(\{0\})$. By the Corollary above, $g(f)$ is closed if $f$ is continuous.\\
+    
+    \item Let $x$ be a limit point of $g(f)$. Then $\exists$ a sequence $\{x_n\}$ in $g(f)$ such that $d(x_n,x)\rightarrow 0$.
+    \item $f$ is continuous at $x$. So $\exists\; \delta>0\;\;\forall \epsilon>0$ such that $d(x_n,x)<\delta \Leftrightarrow d(f(x_n)-f(x))<\epsilon$.
+    \item As $\{x_n\}$ converges to $x$, $\exists\; N$ such that $n\ge N$; hence $d(f(x_n)-f(x))<\epsilon$.
+    \item Since $f(x_0)=0,\; d(f(x_n)-f(x)) = d(f(x)) < \epsilon \;\;\forall\; \epsilon>0.$
+    \item This leads to $f(x) = 0$, or $x\in g(f)$, and $g(f)$ is, therefore, closed since it contains all its limit points.
+    
+\end{itemize}
+
+
+\vspace{1.5\baselineskip}
+\textbf{Question 7.2}\\
+We say that a function $f\colon X\rightarrow Y$ is Lipschitz if there exists a real number $L>0$ such that 
+$$d(f(x_1),f(x_2))\le Ld(x_1,x_2)$$ for all $x_1,x_2\in X$.
+Show that every Lipshitz function is continuous.
+\begin{itemize}
+    \item Fix $c\in X$, and let $x_1\in X$ converges to $c$ and $\epsilon>0$ be given.
+    \item Suppose $\exists\; N$ such that $n>N$ and $|x_1 - c| \le \epsilon / L$.
+    \item Now we hold, $$d(f(x_1)-f(c)) \le Ld(x_1,c)\le \epsilon$$
+    \item i.e. $f(x_1)$ converges to $f(c)$.
+    \item The continuity of $f$ on $X$ is proved.
+\end{itemize}
+
+
+\newpage                                                                                          
+\textbf{Question 7.3}\\
+Let $p\in X$ be a fixed point. Prove that the function $f(x)=d(x,p)$ is Lipschitz, and hence continuous.
+\begin{itemize}
+    \item Suppose $\exists\;x,y\in X$ such that $f(x) = d(x,p) \le d(x,y)+d(y,p) = d(x,y)+ f(y)$
+    \item$\Leftrightarrow f(x)-f(y) \le d(x,y) \Leftrightarrow f(y)-f(x) \le d(y,x)=d(x,y)
+    \Leftrightarrow d(f(x),f(y)) \le d(x,y)$
+    \item As there exists Lipshitz constant which is 1, $|f(x)-f(y)|\le 1\cdot d(x,y)$, $f(x)$ is Lipschitz.
+    
+\end{itemize}
+
+\vspace{1.5\baselineskip}
+\textbf{Question 7.4}\\
+Let $E\subset X$ and define a function $f\colon X\rightarrow \mahttbb{R}$ by $$f(x) = \inf\{d(x,p)\;|\;p\in E\}.$$
+Show that $f$ is Lipschitz, and hence continuous.
+\begin{itemize}
+    
+    
+    \item $f(x) = \inf\{d(x,p)\} \le d(x,p) \le d(x,y)+d(y,P)\;\Leftrightarrow\;f(x)-d(x,y)\le d(y,p)=f(y)$
+    \item $f(x)-f(y)\le d(x,y) \Leftrightarrow f(y)-f(x) \le d(y,x)=d(y,x) \Leftrightarrow d(f(x),d(y)) \le d(x,y)$
+\end{itemize}
+
+
+\vspace{1.5\baselineskip}
+\textbf{Question 7.5}\\
+Let $K\subset X$ be compact and suppose that $x\in X\setminus K$. Prove that there exists a nearest point of $K$ to $x$, that is, that there exists $p\in K$ such that $d(x,p)\le d(x,q)$ for all $q\in K$.
+
+\vspace{1.5\baselineskip}
+\textbf{Question 7.6}\\
+Define the function $f\colon\mathbb{R}\rightarrow\mathbb{R}$ by $f(x)=\sqrt{|x|}$. Is $f$ Lipschitz?
+\begin{itemize}
+    \item Suppose that $x,y\in \mathbb{R}$. To prove whether $f$ is Lipschitz, we need to find a Lipschitz constant $C$ such that $d(\sqrt{x}-\sqrt{y})\le Cd(x,y)$ which holds on any interval.
+    \item Fix $y=0$. Then we obtain 
+    $$\frac{\sqrt{x}-\sqrt{0}}{|x-0|} = \frac{1}{\sqrt{x}} \le C <1$$
+    \item However, $1/\sqrt{x} < 1$ does not hold for all $x$. Thus $f$ is not Lipschitz.
+\end{itemize}
+\vspace{1.5\baselineskip}
+\textbf{Question 7.7}\\
+Let $f,g: X\rightarrow Y$ be continuous functions and suppose that $E\subset X$ is dense. Prove that $f(E)$ is dense in $f(X)$. Suppose now that $f(p) = g(p)$ for all $p\in E$. Prove that $f(x)=g(x)$ for all $x\in X$.
+
+
+\end{document}

@@ -1,0 +1,312 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\pagestyle{fancy}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{Math 521}
+\chead{Homework 3}
+\rhead{Meenmo Kang}
+
+\noindent
+\textbf{Question 3.1}\\
+Determine which of the following functions $d_j : \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}$ determines a metric.\\
+
+\noindent
+Note that the definition of metric space.
+\begin{enumerate}[label=(\alph*)]
+    \item d(p,q) $>$ 0 if $p\neq q$; d(p,p) = 0
+    \item d(p,q) = d(q,p)
+    \item d(p,q) $\le$ d(p,r) + d(r,p) \;\;$\forall\; r\in \mathbb{R}$.\\
+\end{enumerate}
+
+\begin{enumerate}[label=(\roman*)]
+    \item $d_1(x,y) = (x-y)^2$
+        \begin{enumerate}[label=(\alph*), start=3]
+            \item Consider $d_1$(1,3)
+                \begin{itemize}
+                    \item $d_1$(1,3) = 4
+                    \item $d_1$(1,2) = 1; $d_1$(2,3) = 1
+                    \item $d_1$(1,3) $\nleq$ $d_1$(1,2) + $d_1$(2,3)
+                    \item Thus this is not a metric.\\
+                \end{itemize}
+        \end{enumerate}
+        
+    \item $d_2(x,y) = \sqrt{|x - y|}$
+        \begin{enumerate}[label=(\alph*)]
+            \item $d_2(x,y)$ $>$ 0 if $p\neq q$; d(x,x) = 0
+                
+                \begin{itemize}
+                    \item If x = y, $d_2(x,y) = 0$;\\ 
+                    Otherwise $d_2(x,y) > 0$ since the absolute value and the square root is always positive by definition.                 \end{itemize}
+                
+            \item $d_2(x,y)$ = $d_2(y,x)$
+                \begin{itemize}
+                    \item $d_2(x,y) = \sqrt{|x - y|} = \sqrt{|-1|\cdot |y - x|} = \sqrt{|y - x|} = d_2(y,x)$
+                \end{itemize}
+            
+            \item $d_2(x,y)$ $\le$ $d_2(x,z)$ + $d_2(z,y)$ \;\;$\forall\; z\in \mathbb{R}$.
+                \begin{itemize}
+                    \item $d_2(x,y) = \sqrt{|x - z|}$
+                    \item $d_2(x,z) = \sqrt{|x - z|}$;   $\quad d_2(z,y) = \sqrt{|z - y|}\quad\forall\;z \in \mathbb{R}$
+                    \item $d_2(x,y) \le d_2(x,z) + d_2(z,y)$\\
+                \end{itemize}
+        \end{enumerate}
+    
+    \item $d_3(x,y) = |x^2 - y^2|$
+        \begin{enumerate}[label=(\alph*)]
+            \item Consider $d_3$(1,-1) where $x \neq y$
+             \begin{itemize}
+                 \item $d_3$(1,-1) = 0 $\ngtr$ 0
+                 \item Thus this is not a metric.\\
+             \end{itemize}
+        \end{enumerate}
+    \newpage
+    \item $d_4(x,y) = |x - 2y|$
+        \begin{enumerate}[label=(\alph*)]
+                \item Consider $d_4$(1,1) 
+                 \begin{itemize}
+                     \item $d_4$(1,1) = 1 $\neq$ 0
+                     \item Thus this is not a metric.\\
+                 \end{itemize}
+            \end{enumerate}
+
+    \item $d_5(x,y) = \frac{|x-y|}{1 + |x-y|}$
+        \begin{enumerate}[label=(\alph*)]
+            \item If $x = y$, $|x - y| = 0 \Leftrightarrow d_5(x,y) = 0$;\\
+                  Otherwise $d_5(x,y) = \frac{|x-y|}{1 + |x-y|} > 0$
+            \item $d_5(x,y) = \frac{|x-y|}{1 + |x-y|} = \frac{|-1|\cdot |y-x|}{1 + |-1|\cdot |y-x|} = \frac{|y-x|}{1 + |y-x|} = d_5(y,x)$
+            \item $d_5(x,y) = \frac{|x-y|}{1 + |x-y|}$ \\
+                  $d_5(x,z) = \frac{|x-z|}{1 + |x-z|}$; $\quad d_5(z,y) = \frac{|z-x|}{1 + |z-x|}$ \;\;$\forall\; z\in \mathbb{R}$.\\
+                  \Rightarrow\;\;
+                  $d_5(x,y) \le d_5(x,z) + d_5(z,y)$\\
+        \end{enumerate}
+\end{enumerate}
+
+\newpage
+\vspace{1.5\baselineskip}
+\noindent
+\textbf{Question 3.2}\\
+Let $A_1, A_2, A_3, ...$ be subsets of a metric space.
+\begin{enumerate}[label=(\roman*)]
+    \item If $B_n= \cup_{i=1}^n A_i$, prove that $\overline{B}_n = \cup_{i=1}^n \overline{A}_i$.
+        \begin{itemize}
+            \item $n=2$
+                \begin{itemize}
+                    \item $\overline{A_1} \cup \overline{A_2} = (A_1 \cup A_1 ') \cup (A_2 \cup A_2')$ by the definition of closed set\\
+                    where $A_i'$ is a set of all limit points in A.
+                    \item $(A_1 \cup A_1 ') \cup (A_2 \cup A_2') = (A_1 \cup A_2) \cup (A_1' \cup A_2')$\\ $= (A_1 \cup A_2) \cup (A_1 \cup A_2)'
+                    = \overline{A_1 \cup A_2}$
+                \end{itemize}
+            
+            \item $n=3 $
+                    \begin{itemize}
+                        \item $\overline{A_1} \cup \overline{A_2} \cup \overline{A_3} = \overline{A_1 \cup A_2} \cup \overline{A_3} = ((A_1 + A_2)+(A_1 + A_2)') + (A_3 + A_3')$\\
+                        $=(A_1 + A_2 + A_3) + (A_1 + A_2 + A_3)'= \overline{A_1+A_2+A_3}$
+                    \end{itemize}
+            
+            \item $B_n = \cup_{i=1}^n A_i$
+                \begin{itemize}
+                    \item Therefore $\overline{\cup_{i=1}^n A_i} = \cup_{i=1}^n \overline{A_i}$
+                \end{itemize}
+        \end{itemize}
+    
+    \item If $B = \cup_{n=1}^\infty A_n$, prove that $\overline{B} \supset \cup_{n=1}^\infty \overline{A}_i$.
+        \begin{itemize}
+            \item Recall that a closed set $\overline{B}_n = B_n \cup B_n'$ \hfill (where $B_n'$ is a set of all its limit points).
+            \item Suppose $A_n = \frac{1}{n}$ 
+            \item Since $A_n$ is open, 0 $\notin A_n'$; However, $0 \in B_n'$ as $n$ goes to $\infty$ due to its closeness.
+            \item Hence $\overline{B} \supset \cup_{n=1}^\infty \overline{A_i}$ is said to be proper.
+        \end{itemize}
+\end{enumerate}
+
+\newpage
+\noindent
+\textbf{Question 3.3}\\
+Let $E$ be a subset of a metric space and let $E = E^\circ$
+\begin{enumerate}[label=(\roman*)]
+    \item $E^\circ$ is open
+        \begin{itemize}
+            \item Let $x\in E^\circ,$ and suppose $\exists\;y\in E$ and $r>0$ such that $d(x,y) < r$.
+            \item Let $h = r - d(x,y)$, and $\exists\;\alpha$ such that $d(y,\alpha) < h < r$. 
+            \item Then, by the Triangle inequality, $d(x,\alpha) \le d(x,y) + d(y,\alpha)$
+            \item Since $d(y,\alpha) < h$, $\; d(y,x) + d(y,\alpha) < d(x,y) + h = r$
+            \item Hence $\alpha \in E$. i.e. $y \in E^\circ$.
+            \item This follows all such points are in $E^\circ$.
+            \item Thus $E^\circ$ is open.
+        \end{itemize}
+    \item $E$ is open iff $E = E^\circ$
+        \begin{itemize}
+            \item $\Rightarrow$ Obviously $E^\circ$ is included in $E$ ($E^\circ \subset E$).\\
+                  By the definition of openness, every point of $E$ is an interior point of E.\\
+                  i.e. $E^\circ \subset E$. Thus $E^\circ = E.$
+            
+            \item $\Leftarrow$ Since every point of $E$ is an interior point of $E$, $E$ is open.
+        \end{itemize}
+    
+    \item If $G \subset E$ and $G$ is open, the $G \subset E^\circ$ (so $E^\circ$ is the largest open subset of $E$).
+        \begin{itemize}
+            \item Take $\alpha \in G$. Then $\alpha \in E^\circ$ since $G \subset E$ and $E^\circ$ is the largest open subset of $E$.
+            \item Hence $G \subset E$.
+        \end{itemize}
+    
+    \item $(E^\circ)^c = \overline{E^c}$, where the overline denotes closure.
+        \begin{itemize}
+            \item $(E^\circ)^c \subseteq \overline{E^c}$ 
+                \begin{itemize}
+                    \item Suppose $\exists \; x \in \overline{A^c}$.
+                    \item Then for every $\epsilon > 0,\; B(x,\epsilon) \cup A^c \neq \phi.$
+                    \item i.e. there are some overlapped area between any ball around $x$ and $A^c$.
+                    \item This strictly implies $x \notin A$ or $x \notin A^\circ$, but $x \in (A^\circ)^c$.
+                \end{itemize}
+                
+            \item $(E^\circ)^c \supseteq \overline{E^c}$
+                \begin{itemize}
+                    \item Suppose $\exists \; x \in (A^\circ)^c$.
+                    \item Then there is no such ball $B(x,\epsilon) \subseteq A$ for every $\epsilon$.
+                    \item i.e. there are some overlapped area between any ball around $x$ and $A^c$.
+                    \item This also shows $x \in \overline{A^c}.$\\
+                \end{itemize}
+            
+            \item Hence we proved $(E^\circ)^c = \overline{E^c}$ 
+        \end{itemize}
+\end{enumerate}
+
+
+\newpage
+\noindent
+\textbf{Question 3.4}\\
+Let $E$ be a subset of a metric space. Either prove or find a counterexample to:
+\begin{enumerate}[label=(\roman*)]
+    \item $E^\circ = (\bar{E})^\circ$
+        \begin{itemize}
+            \item Obviously $E = E^\circ$ and \overline{E} = $(\overline{E})^\circ$
+            \item Suppose $E = (1,2)\cup (2,3)$. Then $\overline{E} = \{1\} \cup \{2\} \cup \{3\} \cup (1,3) = [1,3].$
+            \item Hence $E^\circ \neq (\bar{E})^\circ$, but $E^\circ \subset (\bar{E})^\circ$
+        \end{itemize}
+    \item $\overline{E} = \overline{(E^\circ)}$
+        \begin{itemize}
+            \item Suppose $E = \mathbb{Q}$ (The whole space of rational number).
+            \item Then $\overline{E} = \mathbb{R}\setminus \mathbb{Q}$.
+            \item $(\overline{E^\circ}) = (\overline{\mathbb{Q}^\circ}) = \phi\;$ since irrational is dense in $\mathbb{R}$.
+            \item Thus $\overline{E} \neq \overline{\mathbb{Q}^\circ}$
+        \end{itemize}
+\end{enumerate}
+ 
+ 
+ \newpage
+ \noindent
+ \textbf{Question 3.5}\\
+ A metric space is called separable if it contains a countable dense subset. Prove that $\mathbb{R}^n$ is separable.\\
+ \textbf{Hint}: Consider the set of points with rational coordinates.\\
+ 
+ \begin{itemize}
+     \item A handy example for a countable dense subset would be $\mathbb{Q} \in \mathbb{R}.$
+     \item Take $p = (p_1, ... , p_n) \in \mathbb{R}^k.$ 
+     \item Since $\mathbb{Q}$ is dense in $\mathbb{R}$, $p\in \mathbb{Q} \cup \mathbb{Q}' \quad$ (where $\mathbb{Q}'$ is a set of limit points of $\mathbb{Q}).$\\
+     
+     \item In order $p$ to be limit points of $\mathbb{Q}$, $\exists\; B_r(p)$ such that  a ball around $p$ with radius $r$.
+     \item Take $q = (q_1, ... , q_n) \in \mathbb{Q}$ such that $q_i \neq p_i$ for $i = 1,...,n$.
+     \item Let $\alpha = \frac{r}{n}$, and we obtain an inequality by the triangle theorem, $$d(p,q) = \sqrt{(p_1 - q_1)^2 + \dots + (p_n - q_n)^2} < \sqrt{\frac{r^2}{n} + ... + \frac{r^2}{n}} = \sqrt{\frac{nr^2}{n}} = r$$
+     \item Hence we conclude that $q \in B_r(p)$, and $p$ is limit points of $\mathbb{Q}$.
+     \item Thus $\mathbb{Q}^k$ is a countable dense subset in $\mathbb{R}^k$
+ \end{itemize}
+
+ 
+ \newpage
+ \noindent
+ \textbf{Question 3.6}\\
+ Consider $\mathbb{Q}$ with the usual distance $d(p,q) = |p - q|$ as a metric space and consider the subset $$E = \{p\in \mathbb{Q}\;|\;2 < p^2 < 3\}.$$
+ Prove that $E$ is closed and bounded in $\mathbb{Q}$ but that E is not compact in $Q$. Is $E$ open in $\mathbb{Q}?$
+  
+\begin{itemize}
+    \item $E$ is closed in $\mathbb{Q}$.
+        \begin{itemize}
+            \item In order to prove $E$ is closed, it should be proved that $E$ is closed in $\mathbb{Q}$. 
+            \item Recall the definition of closed set: A set is closed if every lmit point of $E$ is in $E$. 
+            \item Suppose $x \in \mathbb{Q}$ is a limit point of $E$.
+            \item Obviously $p^2 \neq 2$ or $p^2 \neq 3$.\\
+            
+            \item Proof by contradiction
+                \begin{itemize}
+                    \item Suppose $p^2 < 2 \Leftrightarrow (\sqrt{2}-p)(\sqrt{2}+p) > 0\;\;\Leftrightarrow\;\; \sqrt{2} < |p|$
+                    \item For some $r$, $r + |x| = \sqrt{2}$
+                    \item If $q \in N_r(x)$, then
+                    $$
+                    |q| \le |x-q| + |x| < |x| + r = \sqrt{2}
+                    $$
+                    \item i.e. $q^2 < 2 \Leftrightarrow x^2 < 2$ which contradicts that $x$ is a limit point of $E$.
+                    \item Hence $2 < x^2$.\\
+            
+                    \item If $x^2 > 3 \Leftrightarrow (|x| + \sqrt{3})(|x| - \sqrt{3}) > 0 \Leftrightarrow |x| - \sqrt{3} > 0 $  
+                    \item Suppose $s = |x| - \sqrt{3}$.
+                    \item Similarly,
+                    $$
+                    |q| \ge \x\ - |x-q| \ge |x| - s = \sqrt{3}
+                    $$
+                    \item Hence for any $q$ is in $N_s(x)$. 
+                    \item i.e. $q \notin E \Leftrightarrow$ x is not a limit point of E.\\
+                \end{itemize}
+                
+                \item Thus we conclude that $E$ is closed in $\mathbb{Q}$.
+        \end{itemize}
+        
+    \item $E$ is bounded in $\mathbb{Q}$
+        \begin{itemize}
+            \item $\sqrt{2} < p < \sqrt{3}\;\; ; -\sqrt{3} < p < -\sqrt{2} \;\; \Rightarrow \quad -\sqrt{3} < p < \sqrt{3}\;\;\Rightarrow \;\;|E| < 2$  \\
+            $\Rightarrow E$ is bounded by 2.
+        \end{itemize}
+    
+    \item Is $E$ open in $\mathbb{Q}$?
+        \begin{itemize}
+            \item Since $\mathbb{Q}$ is dense in $\mathbb{R}$, $\exists\; \alpha \in \mathbb{Q}, \epsilon >0$ such that $|p-\alpha| < \epsilon $ and a ball around $p\;$\\$ B_\epsilon(p) \subset E$.
+            \item i.e. For all $x$, $x \in E \in E^\circ \Rightarrow$ $E$ is open.
+        \end{itemize}
+        
+\end{itemize}
+
+\end{document}

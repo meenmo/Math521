@@ -1,0 +1,241 @@
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\pagestyle{fancy}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{Math 521}
+\chead{Homework 1}
+\rhead{Meenmo Kang (H)}
+
+\noindent \textbf{Question 1.1}\\
+Let $F = {0,1}$ be the set called the paddock, defined in class, and define addition and multiplication on $F$ by 
+$$0 + 0 = 0,\quad 0 + 1 = 1 + 0 = 1,\quad 1 + 1 = 0,$$
+and
+$$ 0 \cdot 0 = 0\cdot1 = 1\cdot0 = 0, \quad 1\cdot1 = 1$$
+\begin{itemize}
+    \item Is $F$ a field? 
+        \begin{itemize}
+            \item Check if addition is closed.
+                \begin{itemize}
+                    \item (A1) 0 + 1 = 0 $\in F$
+                    \item (A2) 0 + 1 = 1 + 0 = 1
+                    \item (A3)
+                        \begin{itemize}
+                            \item (0 + 1) + 1 = 1 + 1 = 0\\
+                                  0 + (1 + 1) = 0 + 0 = 0\\
+                                  Thus (0 + 1) + 1 = 0 + (1 + 1) \\
+                            \item (0 + 1) + 0 = 1 + 0 = 1\\
+                                  0 + (1 + 0) = 0 + 1 = 1\\
+                                  Thus (0 + 1) + 0 = 0 + (1 + 0) 
+                        \end{itemize}
+                        
+                    \item (A4)
+                        \begin{itemize}
+                            \item 0 + 1 = 1 $\in F$
+                            \item 0 + 0 = 0 $\in F$
+                        \end{itemize}
+                    \item (A5) 
+                        \begin{itemize}
+                            \item 0 + (-0) = 0
+                            \item 1 + (-1) = 0
+                        \end{itemize}
+                    \item Therefore $F$ is closed under addition.
+                \end{itemize}
+                
+            \item Check if multiplication is closed.
+                \begin{itemize}
+                    \item (M1) $0 \cdot 1 = 0 \in F$
+                    \item (M2) $0 \cdot 1 = 1 \cdot 0 = 0 $
+                    \item (M3) 
+                        \begin{itemize}
+                            \item $(1\cdot 0)\cdot 0 = 1\cdot (0\cdot 0) = 0$
+                            \item $(1\cdot 0)\cdot 1 = 1\cdot (0\cdot 1) = 0$
+                        \end{itemize}
+                    \item (M4)
+                        \begin{itemize}
+                            \item $1\cdot0=0$
+                            \item $1\cdot1=1$
+                        \end{itemize}
+                    \item (M5)
+                        \begin{itemize}
+                            \item $\frac{1}{1}\cdot1=1$
+                        \end{itemize}
+                    \item Therefore $F$ is closed under multiplication.
+                \end{itemize}
+        \end{itemize}
+    \textbf{Thus F is a field.}
+    \item Is $F$ an ordered field?
+        \begin{itemize}
+            \item In case where $1 > 0$
+            \item $1 + 1 > 1 + 0$
+            \item $0 > 1$, which is a contradiction
+        \end{itemize}
+\end{itemize}
+\textbf{Thus $F$ is not an ordered field}\\
+\newline
+\noindent \textbf{Question 1.2}\\ 
+Prove that there is no rational number $p \in \Q$ such that $2^p = 6$.
+\begin{itemize}
+    \item Argue by contradiction. Suppose $\exists$ a rational number p such that $2^p = 6$.
+    \item If there were such a $p$, we could write $\frac{a}{b}$ where a and b are integers that are not both even.
+    \item Then $2^p = 2^{\frac{a}{b}} = 6$. Hence $2^a = 6^b = (2\cdot 3)^b = 2^b \cdot 3^b \; \Leftrightarrow \; \mathbf{2^{a-b} = 3^b}.$
+    \item Since $6 > 2^1$, $p=\frac{a}{b}>1$, which means $a > b$.
+    \item Thus $2^{a-b} > 2$, and $2^{a-b}$ must be even.
+    \item On the other hand, $3^b$ must be odd.
+    \item i.e. $2^{a-b} = 3^b$ is impossible.
+    \item Thus there is no such $p$ that satisfies the condition $2^p=6$.
+\end{itemize}
+\noindent \textbf{Question 1.3}\\
+Use the Archimedean property to prove that for any pair of rational numbers $p < q$, there exists an irrational number x such that $p < x < q$.\\
+\textbf{Hint}: You may use without proof the fact that if $r \neq 0$ is rational and x is irrational, then $r + x$ and $rx$ are both irrational.
+\begin{itemize}
+    \item We are given $p < q$, or equivalently $q - p > 0$. 
+    \item According to the Archimedean property, there is a positive integer n, such that\\ $n(q - p) > 2\;$(instead of 1). 
+    \item Let $x = \frac{q-p}{2}$, and clearly we obtain $p < x < q$, and $\frac{q-p}{2} > \frac{1}{n} \Leftrightarrow \frac{1}{n} < x$.
+    \item Hence $p < x + \frac{1}{n} < 2x = q - p < q$.
+    \item Consider irrational $\frac{1}{n\sqrt{2}}$ in lieu of $\frac{1}{n}$.
+    \item Since $\frac{1}{n\sqrt{2}}$ is still positive, it preserves the inequalities $p < x + \frac{1}{n\sqrt{2}} < q$.
+    \item Since the addition of rational $x$ and irrational $\frac{1}{n\sqrt{2}}$ is irrational number, there exists an irrational such that $p < x + \frac{1}{n\sqrt{2}} < q$.
+\end{itemize}
+\noindent \textbf{Question 1.4}\\
+Let $A \subset \R$ be non-empty and bounded below. Define $-A = \{-a\;|\;a \in A\}$. Prove that $$\text{inf A = - sup(-A)}$$
+\begin{itemize}
+
+    \item inf A $\le$ -sup(-A)
+        \begin{itemize}
+            \item Since inf A is an infimum for A, inf A $\le a\;\; \forall a \in A$, \item Then -inf A $\ge -a  \;\; \forall -a \in -A.$
+            \item In other words, -inf A is an upper bound for -A.
+            \item Hence sup(-A) $\le$ -inf A $\Leftrightarrow$ inf A $\le$ -sup(-A)
+        \end{itemize}
+    \item inf A $\ge$ -sup(-A)
+        \begin{itemize}
+            \item Since A is bounded below, -A is bounded above.
+            \item Then $-a \le$ sup(-A) $\Leftrightarrow a \ge$ -sup(-A)
+            \item This means that -sup(-A) is a lower bound for A implying inf(A) $\ge$ -sup(-A).
+        \end{itemize}
+
+\end{itemize}
+\textbf{inf A $\le$ -sup(-A) and inf A $\ge$ -sup(-A) at the same time. Thus inf A = -sup(-A)}\\
+
+\noindent \textbf{Question 1.5}\\
+Let $A,B \subset \R$ be non-empty and bounded subsets of the real numbers, and let $\lambda \in \R$ be a constant.
+
+\begin{enumerate}[label=(\alph*)]
+    \item Let $\lambda A = \{\lambda A \; | \; a \in A \}.$ Prove that if $\lambda \ge 0$, then sup$\lambda A = \lambda$sup A, and if $\lambda < 0$, then sup $\lambda A = \lambda$inf A. 
+    
+    \begin{enumerate}[label=\roman*.]
+        \item $\lambda \ge 0$
+            \begin{itemize}
+                \item In case where $\lambda = 0$, its supremum and infimum are both 0.
+                \item Fix $\epsilon > 0$, and suppose $\exists\; \alpha \in A$ such that sup A - $\epsilon < \alpha \le$ sup A by definition of supremum.
+                \item Multiply by $\lambda$ each side of the inequality above \\
+                      $$\lambda \text{sup A} - \lambda\epsilon < \lambda\alpha \le \lambda \text{sup A}.$$
+                \item Hence $\lambda \text{sup A}$ is a supremum of $\lambda\alpha$. At the same time, sup $\lambda$A is also a supremum of $\lambda\alpha$ since $\lambda\alpha \in \lambda$A.
+                \item Thus sup $\lambda$A $= \lambda$sup A
+            \end{itemize}
+        
+        \item $\lambda < 0$
+            \begin{itemize}
+                \item Consider the inequalities we stated above sup A - $\epsilon < \alpha \le$ sup A.
+                \item Multiply this inequalities by $\lambda$
+                      $$\lambda \text{sup A} \le \lambda\alpha <  \lambda \text{sup A} - \lambda\epsilon$$
+                \item Since we proved that sup $\lambda$A $= \lambda$sup A, we obtain $$\text{sup $\lambda$A} \le \lambda\alpha \;\Leftrightarrow\; \alpha \ge \frac{1}{\lambda}\cdot\text{sup $\lambda$A}$$
+                \item This means that inf $\alpha = \frac{1}{\lambda}\cdot\text{sup $\lambda$A}$. 
+                \item Hence $\lambda\text{inf }\alpha = \text{sup $\lambda$A}$
+            \end{itemize}
+    \end{enumerate}
+    
+    \item Let $A + B = \{a+b \;|\; a \in A, \;b \in B \}.$ Prove sup(A + B) = sup A + sup B.
+        \begin{itemize}
+            \item By definition, sup A $\ge$ a, and sup B $\ge$ b.
+            \item Thus \textbf{sup A + sup B $\ge$ a + b}.
+            \item Suppose $\epsilon > 0$, and consider a and b such that a $>$ sup A $- \;\frac{\epsilon}{2}$, b $>$ sup B $-\; \frac{\epsilon}{2}$.
+            \item Then \textbf{a + b $>$ sup A + sup B - $\epsilon$}.
+            \item Thus sup(A + B) $\ge$ a + b = sup A + sup B - $\epsilon$.\\
+            \item Suppose x such that $x \in A + B$
+            \item $x \le \text{sup A + sup B}$
+            \item sup x $\le$ sup A + sup B $\Leftrightarrow$ sup (A + B) $\le$ sup A + sup B
+        \end{itemize}
+        We obtain both sup(A + B) $\ge$ = sup A + sup B and sup (A + B) $\le$ sup A + sup B. Thus sup(A + B) = sup A + sup B. 
+    \item Let AB = $\{a\cdot b \;|\; a \in A, \;b \in B \}.$ Either prove or provide a counterexample to sup(AB) = (sup A)(sup B).
+        \begin{itemize}
+            \item Assume $\exists$ A = $\{1,2,3\}$, B = $\{-1,-2,-3\}$. Then AB = $\{-9,-6,-4,-3,-2,-1\}$.
+            \item sup AB = -1, sup A = 3, sup B = -1 respectively.
+            \item sup A $\cdot$ sup B = -3 which is not equal to sup AB = -1.
+        \end{itemize}
+\end{enumerate}
+
+
+\noindent \textbf{Question 1.6}\\
+Let $A \subset \R$ be non-empty and bounded above. Prove that $\alpha = \text{sup A}$ if and only if $x \le \alpha$ for every $x \in A$ and for every $\epsilon > 0$, there exists $x \in A$ with $\alpha - \epsilon < x \le \alpha$.
+\begin{itemize}
+
+    \item $\alpha = \text{sup A}$ \textbf{if} $\alpha = \text{sup A}$ if and only if $x \le \alpha$ for every $x \in A$ and for every $\epsilon > 0$, there exists $x \in A$ with $\alpha - \epsilon < x \le \alpha$.
+        \begin{itemize}
+            \item It is obvious that $\alpha$ is an upper bound for A $\forall x \le \alpha$.
+            \item Argue by contradiction. Suppose there exists $\beta$ such that sup A = $\beta$.
+            \item i.e. $\beta < \alpha$ and $x \le \beta \;\; \forall x \in A \Leftrightarrow 0 < \alpha - \beta$.
+            \item Suppose $\exists\; \epsilon\;\; \text{such that}\;\; \epsilon = \frac{\alpha - \beta}{2} > 0$
+            \item i.e. $\alpha - \epsilon < \alpha$
+            \item Hence $\beta < \alpha \Leftrightarrow 2\beta < \alpha + \beta \Leftrightarrow \beta < \frac{\alpha + \beta}{2} = \epsilon \Leftrightarrow \beta < \alpha - \epsilon$
+            \item Hence further we obtain $\beta < \alpha - \epsilon < \alpha$.
+            \item i.e. $x < \alpha - \epsilon < \alpha \;\; \forall x \in A$, which is contradicted by the given condition that there exists $x \in A$ with $\alpha - \epsilon < x \le \alpha$.
+            \item Thus $\alpha$ must be the least upper bound for A.
+        \end{itemize} 
+ 
+    \item $x \le \alpha$ for every $x \in A$ and for every $\epsilon > 0$, there exists $x \in A$ with $\alpha - \epsilon < x \le \alpha$ \textbf{if} $\alpha = \text{sup A}$
+    \begin{itemize}
+        \item $x \le \alpha$ for every $x \in A$
+        \begin{itemize}
+            \item Argue by contradiction. Suppose $\exists\; x > \alpha \;\;\forall x \in A$.
+            \item By definition, $\alpha$ is not an upper bound of A if $x > \alpha$.
+            \item Therefore, sup A must be equal to $\alpha$ such that $x \le \alpha$ for every $x \in A$.
+        \end{itemize}
+    \item For every $\epsilon > 0$, there exists $x \in A$ with $\alpha - \epsilon < x \le \alpha$
+        \begin{itemize}
+            \item Argue by contradiction. Suppose $\exists \;\; x \le \alpha - \epsilon$ for some $x$.
+            \item i.e. sup A $\neq \alpha$, but sup A = $\alpha - \epsilon$, which is contradiction.
+            \item Hence $\alpha - \epsilon < x \le \alpha \;\;\forall x \in A$
+        \end{itemize}
+    \end{itemize}
+    
+
+        
+\end{itemize}
+
+\end{document}

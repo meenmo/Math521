@@ -1,0 +1,193 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{tasks}
+\pagestyle{fancy}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+\setlength{\parindent}{0pt}
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+ 
+\begin{document}
+\settasks{
+counter-format=(tsk[r]),
+label-width=4ex
+}
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{Math 521}
+\chead{Homework 4}
+\rhead{Meenmo Kang}
+
+
+\textbf{Questions 4.1}\\
+Let $(X,d)$ be a metric space. Prove that a sequence $(x_n)$ in $X$ converges $x_n \rightarrow x \in X$ if and only if every subsequence $x_{n_k} \rightarrow x.$
+
+\begin{itemize}
+    \item $\Rightarrow$ If every subsequence $x_{n_k} \rightarrow x$, a sequence $(x_n)$ in $X$ converges $x_n \rightarrow x \in X$ 
+    \begin{itemize}
+        \item If every subsequence converges $x_{n_k} \rightarrow x$, $\exists\; K$ such that $k\ge K$ and $n_k \ge N$.  
+        
+        \item So $|x_{n_k} - x| < \epsilon$.
+        
+        \item Therefore $\exists\; N $ such that $n\ge N$ and further $x_n$ such that $|x_n - x| <\epsilon$.
+        
+        \item Thus $lim_{k\rightarrow \infty} \; x_{n} = x$.
+    \end{itemize}
+    
+    \item $\Leftarrow$ If a sequence $(x_n)$ in $X$ converges $x_n \rightarrow x \in X$, every subsequence $x_{n_k} \rightarrow x$ .
+    \begin{itemize}
+        \item If a sequence $(x_n)$ in $X$ converges $x_n \rightarrow x \in X$,\\ $\exists\; N$ such that $n\ge N$ implying $|x_n - x| < \epsilon$.
+        
+        \item Then $\exists\; K$ such that $k\ge K$ and $n_k \ge N$. 
+        
+        \item Hence $\exists$ a subsequence $x_{n_k}$ such that $|x_{n_k} - x| < \epsilon$ also.
+        
+        \item Thus $lim_{k\rightarrow \infty} \; x_{n_k} = x$.
+    \end{itemize}
+    
+\end{itemize}
+
+\textbf{Question 4.2}\\
+Let $(X,d)$ be a metric space and let $(x_n)$ be a sequence in $X$. Prove $x_n \rightarrow x\in X$ if and only if $d(x_n,x) \rightarrow 0$ in $\mathbb{R}$.
+
+
+\begin{itemize}
+    \item $\Leftarrow$ If $x_n \rightarrow x\in X$, $d(x_n,x) \rightarrow 0$ in $\mathbb{R}$.
+    \begin{itemize}
+        \item If $x_n \rightarrow x\in X, \exists\; N$ such that $n\ge N$ and $|x_n - x| < \epsilon$ where $\epsilon > 0$.
+        
+        \item So we obtain $-\epsilon < |x_n - x| < \epsilon$. 
+        
+        \item Since we chose an arbitrary $\epsilon$, it can be as small as possible as long as it is greater than 0. 
+        
+        \item Take $lim_{n\rightarrow \infty} -\frac{\epsilon}{n} < |x_n - x| < \frac{\epsilon}{n}$.
+        
+        \item Thus $d(x_n, x)$ converges to 0 eventually.
+    \end{itemize}
+    
+    \item $\Rightarrow$ If $d(x_n,x) \rightarrow 0$ in $\mathbb{R}$, $x_n \rightarrow x\in X$.
+    \begin{itemize}
+        \item Since $d(x_n,x)$ is converging to 0, we cannot say it is equal to 0.\\ 
+        i.e. it is greater than 0.  
+        
+        \item Then consider $\epsilon > 0$ such that $0 < d(x_n, x) = |x_n - x| < \epsilon$.
+
+        \item Then $\exists\; N$ such that $n\ge N$.
+        
+        \item Thus $x_n \rightarrow x \in X$.
+    \end{itemize}
+\end{itemize}
+
+\newpage
+\textbf{Question 4.3}\\
+Let $(X,d)$ be a metric space, $C\subset X$.
+\begin{enumerate}[label=(\roman*)]
+    \item Let $C$ be closed, $(x_n)$ a sequence in $C$. Prove that if $x_n \rightarrow x \in X,$ then $x\in C$.
+    \begin{itemize}
+        \item Suppose by contradiction that $x_n \in C$, but $x\in X \setminus C$ where is open.
+        
+        \item By definition of open, $\exists\; B_\epsilon(x) \subset X\setminus C$. 
+        \\i.e. the ball $B_\epsilon(x)$ is completely contained in $X\setminus C$.
+        
+        \item Hence $\exists\; N$ such that $n\ge N, x_n\in B_\epsilon(x)$.
+        
+        \item This leads to $x_n \subset X\setminus C$. However the sequence $x_n$ is in $C$.
+
+        \item Thus this contradicts to the assumption we made and we proved that \\
+        if $x_n \rightarrow x \in X,$ then $x\in C$ as required.
+    \end{itemize}
+    
+    \item Suppose that for every sequence $(x_n)$ in $C$ such that $x_n \rightarrow x \in X$ that $x \in C$. Prove that $C$ is closed.
+    \begin{itemize}
+        \item $C\subset X$ and $\exists$ a limit point $x$ of $C$.
+        \item This implies that $\exists$ a sequence $x_n$ that converges to $x$ in $C$ also.
+        \item Since the given limit point $x$ and $x_n$ are proven to be in the set $C$, $C$ is a closed set.
+    \end{itemize}
+    
+\end{enumerate}
+
+\textbf{Question 4.4}\\
+Let $A\subset \mathbb{R}$ and suppose $(x_N)$ is a sequence of upper bounds for $A$, that is, suppose that for every $n\in \mathbb{N},\; x_n$ is an upper bound for $A$. Suppose $x_n \rightarrow x$. Prove that $x$ is an upper bound for $A$.
+\begin{itemize}
+    \item $x_n$ is an upper bound of A. Then $\exists\; a\in A$ such that $a \le min\{x_n\} \le x_n$.
+    
+    \item Since $x_n \rightarrow x$, $\exists\; N\in \mathbb{N}$ such that $n\ge N$ and $|x_n - x| < \epsilon \;\; \forall \;\epsilon > 0$.
+    
+    \item i.e. $-\epsilon < x_n - x < \epsilon \Leftrightarrow x - \epsilon < x_n < x + \epsilon$\\
+    
+    \item Suppose by contradiction that $x+\epsilon  < supA\;\;\forall\;\epsilon>0$. Then $x_n < x + \epsilon < supA$. 
+    \item Since $x_n$ is an upper bound of $A$, $supA \le x_n$.
+    \item And by the inequality we obtained above, $supA\le x_n < x+\epsilon'$ which contradicts with our assumption.
+    \item Hence $x$ is also an upper bound of $A$.
+\end{itemize}
+
+\newpage
+\textbf{Question 4.5}\\
+Let $(x_n), (y_n), (z_n)$ be sequences of real numbers such that $x_n \rightarrow y, z_n \rightarrow y$ and, for all $n\in \mathbb{N},\; x_n \le y_n \le z_n.$ Prove that $y_n \rightarrow y$ also.
+
+\vspace{1.5\baselineskip}
+Take $\epsilon>0$ and suppose $\exists\; N',N'' \in \mathbb{N}$ such that
+\begin{tasks}(2)
+    \task $|x_n - y| < \epsilon$ for $n\ge N'$\\
+    $\Rightarrow y-\epsilon < x_n < y + \epsilon$
+    \task $|z_n - y| < \epsilon$ for $n\ge N''$\\
+    $\Rightarrow y-\epsilon < z_n < y + \epsilon$
+\end{tasks}
+\begin{itemize}
+    \item Since $ x_n \le y_n \le z_n$,\; $y-\epsilon < x_n \le y_n \le z_n < y+\epsilon$.
+    \item Hence $y-\epsilon < y_n < y+\epsilon$. i.e. $|y_n - y| < \epsilon$.
+    \item Thus $y_n$ converges to $y$ also.
+\end{itemize}
+
+
+\textbf{Question 4.6}\\
+For a sequence $(x_n)$ of real numbers, define the arithmetic mean $\sigma_n$ by 
+$$\sigma_n = \frac{x_1+\ldots + x_n}{n}.
+$$
+\begin{enumerate}[label=(\roman*)]
+    \item Prove that if $lim_{n\rightarrow \infty} x_n = x,$ then $lim_{n\rightarrow \infty} \sigma_n = x$ .
+    \item Prove by a counterexample that the converse statement is not true. More precisely, construct a sequence $(x_n)$ that does not converge such that $\sigma_n \rightarrow 0$.
+\end{enumerate}
+
+
+
+\end{document}
