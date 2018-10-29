@@ -1,0 +1,125 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[nouppercase,headsepline,footsepline,plainfootsepline]{scrpage2}
+\automark{section}
+\pagestyle{scrheadings}
+%\clearscrheadfoot
+\ihead{Numerical Sequences and Series}
+%\ofoot[\pagemark]{\pagemark}% Optional argument controls chapter-starting pages
+\ifoot[(Author)]{{\sl \hfill Meenmo K.}}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{tasks}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+\setlength{\parindent}{0pt}
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+ 
+\begin{document}
+\section{Sequences of Real Numbers}
+\begin{block}A sequence is a map from $\mathbb{N}$ to a set. So a sequence of real numbers is a map $x\colon \mathbb{N}\to\mathbb{R}$ where we write $x_n=x(n), (x_n), \{x_n\}, \text{ or } x_1,x_2,...$.\end{block} \\
+
+\begin{block}{\bf Definition} Let $(x_n)$ be a sequence in $\mathbb{R}\colon\; x\in\mathbb{R}$. We say $x_n$ converges to $x$ and write $x_n\to x$ or $\lim\limits_{n\to\infty} x_n = x$ if $\forall\;\epsilon>0, \exists\;N\in\mathbb{N}$ such that $\forall\;n\ge N,\; |x_n-x|<\epsilon$. Then we call $x$ the limit of $(x_n)$.\end{block}
+
+\vspace{1.5\baselineskip}
+\begin{block}{\bf Example} 
+\begin{enumerate}[label=(\roman*)]
+    \item Let $x_n=\frac{1}{n}.$ Show that $x_n\to 0$ as $n\to\infty$.
+    \begin{itemize}
+        \item Take $\epsilon>0$, and let $N>\frac{1}{\epsilon}$ such that $N\in \mathbb{N}.$
+        \item Now, $\forall N\ge N,\; |x_n-0|=|x_n| = \frac{1}{n}\le \frac{1}{N}<\epsilon$.
+    \end{itemize}
+    
+    \item Let $x_n = 1-\frac{1}{n^2}$. show that $x_n\to 1$ as $n\to \infty$.
+    \begin{itemize}
+        \item Take $\epsilon>0$, and let $N>\frac{1}{\epsilon}$ such that $N\in \mathbb{N}.$
+        \item Now, $\forall N\ge N,\; |x_n- 1|=|1-\frac{1}{n^2} -1| = \frac{1}{n^2} \le \frac{1}{N^2} < \epsilon$.
+    \end{itemize}
+\end{enumerate}
+\end{block}
+
+\vspace{1.5\baselineskip}
+\begin{block}{\bf Theorem} Let $(x_n)$ in $\mathbb{R}$ such that $x_n\to x$ and $x_n\to y$ then x=y.\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\sl Proof.} 
+\begin{itemize}
+    \item Suppose by contradiction that $|x-y|>0$.
+    \item Take $\epsilon=\frac{|x-y|}{2}$. Then
+    \begin{itemize}
+        \item $\exists\;N_1\in\mathbb{N}$ such that for $n\ge N_1,\;|x_n-x|<\epsilon$
+        \item $\exists\;N_2\in\mathbb{N}$ such that for $n\ge N_2,\;|x_n-y|<\epsilon$
+    \end{itemize}
+    \item Let $N= \max(N_1,N_2)$, then $\forall\;n\geN$,
+    $$0<|x-y| = |x-x_n+x_n-y| \le |x-x_n|+|x_n-y|<2\epsilon = |x-y|$$
+    This contradicts to the initial assumption that $|x-y|>0$.
+\end{itemize}
+\end{block}
+
+\newpage
+\begin{block}{\bf Theorem} (Algebra of Limits) Let $(x_n), (y_n)$ in $\mathbb{R},\; x_n\to x,\; y_n\to y$. Then
+\begin{enumerate}[label=(\roman*)]
+    \item $x_n+y_n \to x+y,\; cx_n\to cx\;\;\forall c\in\mathbb{R}$
+    \item $x_n\times y_n \to xy$
+    \item If $y_n$ with $y\neq 0\;\;\forall\;n\in\mathbb{N},\;$then $\frac{x_n}{y_n}\to \frac{x}{y}.$
+\end{enumerate}
+\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\sl Proof.}
+\begin{enumerate}[label=(\roman*)]
+    \item Let $\epsilon >0$. Then 
+    \begin{itemize}
+        \item $\exists\;N_1\in\mathbb{N}$ such that $\forall\;n\ge N_1,\;|x_n-x|<\frac{\epsilon}{2}$
+        \item $\exists\;N_2\in\mathbb{N}$ such that $\forall\;n\ge N_2,\;|y_n-y|<\frac{\epsilon}{2}$
+    \end{itemize}
+    Let $N=\max(N_1,N_2)$. Then 
+    $$\forall\;n\geN,\;|x_n+y_n-(x+y)|\le |x_n-x|+|y_n-y|<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$$
+    %\item Then $\forall\;n\ge N=\max(N_1,N_2),\;|$
+    
+    \item $x_ny_n - xy \to 0\;\Leftrightarrow\; x_ny_n\to xy$.
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    
+\end{enumerate}
+\end{block}
+
+\end{document}

@@ -1,0 +1,139 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[nouppercase,headsepline,footsepline,plainfootsepline]{scrpage2}
+\automark{section}
+\pagestyle{scrheadings}
+%\clearscrheadfoot
+\ihead{Math 521\;\; Differentiation}
+%\ofoot[\pagemark]{\pagemark}% Optional argument controls chapter-starting pages
+\ifoot[(Author)]{{\sl \hfill Meenmo K.}}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{tasks}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+\setlength{\parindent}{0pt}
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+ 
+\begin{document}
+\section{Differentiation}
+\subsection{Differentiable Functions}
+\begin{block}{\bf Def 5.1}
+\begin{itemize}
+\item Let $f\colon(a,b)\to \mathbb{R},\; a<b\in\overline{\mathbb{R}}$. $f$ is {\sl differentiable at $x\in(a,b)$} if $\lim\limits_{h\to0}\frac{f(x+h)-f(x)}{h}$ exists. 
+
+\item If this limit exists, 
+$$f'(x)=\lim\limits_{h\to 0}\frac{f(x+h)-f(x)}{h}$$ is the {\sl derivative of $f$ at $x$}
+
+\item If $f$ is differentiable at all $x\in(a,b),$ we say $f$ is {\sl differentiable}.
+\end{itemize}
+\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\bf Theorem 5.2} Let $f\colon (a,b)\to \mathbb{R}$ be differentiable at $x\in(a,b).$ Then $f$ is continuous at $x$.\end{block}
+
+\vspace{1\baselineskip}
+
+\begin{block}{\sl Proof.}
+\begin{itemize}
+    \item Let $x_n\to x,$ i.e. $\exists\;$ a sequence $h_n\to 0$ such that $x_n=x+h_m$. Then 
+    $$f(x_n)-f(x) =\frac{f(x+h_n)-f(x)}{h_n}\cdot h_n \longrightarrow f'(x)\cdot 0 = 0$$
+\end{itemize}
+\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\sl Remark 5.3}
+\begin{itemize}
+    \item $f$ is differentiable $\Rightarrow\;f$ is continuous.
+    \item $f$ is continuous $\nRightarrow\;f$ is differentiable
+    \item $\exists\;f\colon\mathbb{R}\to\mathbb{R}$ is continuous such that $f $is not differentiable at any $x\in\mathbb{R}$.
+\end{itemize}
+\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\bf Theorem 5.4}Let $f,g\colon (a,b)\rightarrow\mathbb{R},$ differentiable at $x\in(a,b).$ Then
+\begin{enumerate}[label=(\roman*)]
+    \item $(f+g)(x)$ is differentiable at $x,\; (f+g)'(x)=f'(x)+g'(x).$
+    \item $(fg)$ is differentiable at $x,\; (fg)'(x)=f'(x)g(x)+g'(x)f(x).$
+    \item $\left(\frac{f}{g}\right)$ is differentiable at $x$ if $g(x)\neq 0,$ and $\left(\frac{f}{g}\right)'(x)=\frac{g(x)f'(x)-f(x)g'(x)}{g(x')^2}$
+\end{enumerate}
+\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\sl Proof.}
+\begin{enumerate}[label=(\roman*)]
+    \item Exercise
+    \item Consider $$\frac{(fg)(x+h)-(fg)(x)}{h} = \frac{f(x_h)-f(x))g(x_h)+f(x)(g(x+h)-g(x))}{h}$$
+    Note $$\frac{f(x+h)-f(x)}{h}\rightarrow f'(x)\text{as h goes to inf}$$
+    $$\frac{g(x+h)-g(x)}{h}\to g(x)\text{as h to 0}$$
+    $$g(x+h) \to g(x)\text{as $h\to 0$ as $g$ is continuous at $x$.}$$
+    So $$\frac{(fg)(x_h)-(fg)(x)}{h}\to f'(x)g(x)+g(x)g'(x).$$
+    
+    \item $$\frac{\left(\frac{f}{g}\right)(x+h)-\left(\frac{f}{g}\right)(x)}{h} = \frac{f(x+h)g(x)-f(x)g(x+h)}{hg(x+h)g(x)}$$
+    $$=\frac{(f(x+h)-f(x))g(x)+f(x)(g(x)-g(x+h))}{h\cdot g(x+h)g(x)}$$
+    $$\longrightarrow \frac{f'(x)g(x)-f(x)g'(x)}{g^2(x)}$$
+\end{enumerate}
+\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\bf Example}
+\begin{enumerate}[label=(\roman*)]
+    \item Let $f(x)=c\in \mathbb{R}.$ Then $\frac{f(x+h)-f(x)}{h} = \frac{c-c}{h}=0\rightarrow 0.$ So $f'(x)=0$.
+    \item Let $g(x)=x.$ Then $\frac{g(x+h)-g(x)}{h} = \frac{x+h-x}{h} = 1 \rightarrow 1$ (as $h\to 0$). So $g'(x)=1$.
+    \item Suppose we know $\frac{d}{dx} x^n = nx^{n-1}.$ 
+    \\Check $\frac{d}{dx}(x^{n+1}) = \frac{d}{dx} (x\cdot x^n) = 1\cdot x^n+xnx^{n-1}=(n+1)x^n.$
+\end{enumerate}
+\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\bf Example}\\ 
+Image
+\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\bf Example}\\ 
+
+\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\bf Theorem}
+Let $f\colon(alb)\rightarrow\mathbb{R},\; f(x)\in(c,d),$ be differentiable at $x\in(a,b)$. Let $g\colon (c,d)\rightarrow\mathbb{R}$ be differentiable at $f(x).$ Then $g\circ f$ is differentiable at $x$ and $(g\circ x)=g'(f(x))f'(x)$ 
+\end{block}
+\end{document}
