@@ -1,0 +1,333 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{amsmath,thmtools}
+\pagestyle{fancy}
+
+\setlength{\parindent}{0pt}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\lhead{Math 521}
+\chead{Midterm1 Practice Questions }
+\rhead{Meenmo Kang}
+
+
+\textbf{Question 1}\\
+Suppose A is a non-empty, bounded subset of $\mathbb{R}$. Is it always the case that $inf A \le sup A$? Give either a proof or a counterexample. \begin{itemize}
+    \item Suppose $\alpha = supA, \beta = infA.$ Then $x \le \alpha,\;\beta \le x\;\;\forall\;x\in A$.
+    \item Proof by contradiction: Suppose $supA < infA$
+    \item Then $\alpha < \beta \le x \in A$, which contradicts to $\beta\le x \le \alpha$
+    \item Thus $infA \le supA$.
+    
+    \item Consider a set $A = \{999\} $. In case of this, $infA = supA = \{999\}.$
+    \item Hence $infA\text{ and }supA$ does not always have to be $infA < supA.$
+\end{itemize}
+
+\vspace{1.5\baselineskip}
+\textbf{Question 2}\\
+Suppose A and B are non-empty and bounded subsets of $\mathbb{R}$ such that $A \subset B$.
+\begin{enumerate}[label=(\roman*)]
+    \item Prove $sup A \le sup B$
+        
+        \begin{itemize}
+            \item Since $A \subset B$, $supB$ is an upper bound for $A$ such that $a \le supB\;\;\forall a\in A.$
+            \item As a subset of B, the greatest element of $A$, $supA$, cannot be larger than any element of B.
+            \item Hence $supA \le supB$.
+        \end{itemize}
+    
+    \item Is it always true that $infA \le supB$? Give a proof or counterexample.
+    
+        \begin{itemize}
+            \item By definition, $infA \le supA$.
+            \item We proved $supA\le supB$ in (i).
+            \item Hence $infA \le supB$.
+        \end{itemize}
+        
+    \item Is it always true that $infB \le supA$? Prove or give a contradiction.
+    
+        \begin{itemize}
+            \item As we proved previously, $infB \le infA$. 
+            \item By definition, $infA \le supA$.
+            \item Hence $infB \le supA.$
+        \end{itemize}
+\end{enumerate}
+
+\newpage
+\textbf{Question 3}\\
+Let $A \subset \mathbb{R}$ be a non-empty bounded set of integers. Prove that $sup A$ is an integer.
+
+\begin{itemize}
+    \item Suppose not. Consider $\alpha = supA$ such that $x \le \alpha\;\; \forall\; x \in A$.
+    \item Then $\exists\; x$ such that $\alpha - 1 < x \le \alpha$.
+    \item However, there must be only one integer in the interval $(\alpha -1,\alpha)$.
+    \item Clearly $x$ is an integer, and it lies in the interval. 
+    \item i.e. $x$ is the only integer in the interval.
+    \item Hence, there is no such $\alpha$ as a supremum of A.
+    \item Thus the least upper bound of A should be an integer.
+\end{itemize}
+
+\newpage
+\textbf{Question 4}\\
+Let $A = \{\frac{n}{2n+1}|n\in\mathbb{N}\}.$ Prove that $supA = \frac{1}{2}.$
+
+\begin{itemize}
+    \item $\frac{n}{2n+1} < \frac{n}{2n} = \frac{1}{2}$ leads to that $\frac{1}{2}$ is an upper bound for $A$.
+    \item Suppose $x = supA < \frac{1}{2}.$
+    \item Then $\frac{n}{2n+1} \le x \Leftrightarrow n \le 2nx + x \Leftrightarrow n(1-2x) \le x \Leftrightarrow n \le \frac{x}{1-2x}$
+    \item However, by Archimedean Property, $n > \frac{x}{1-2x} > 0$ for some $n$.
+    \item Therefore, our initial assumption, $x < \frac{1}{2}$, is not valid.
+    \item Since $\frac{1}{2}$ is an upper bound and $x \nless \frac{1}{2}$, $supA = \frac{1}{2}.$
+\end{itemize}
+\vspace{1.5\baselineskip}
+
+\textbf{Question 5}\\
+Let $A = \{\frac{2^n}{2^n+1}|n\in\mathbb{N}\}.$ Prove that $supA = 1.$
+\begin{itemize}
+    \item $\frac{2^n}{2^n+1} < \frac{2^n}{2^n} = 1$ meaning 1 is an upper bound for A.
+    \item Consider $x - \epsilon < \frac{2^n}{2^n+1} \le x$, and let $x = supA$.
+    
+    \item Suppose $\frac{2^{n+1}}{2^{n+1}+1}$ such that $x < \frac{2^{n+1}}{2^{n+1}+1}$
+    \item In order $\frac{2^{n+1}}{2^{n+1}+1}$ on the right hand side to make
+    $\frac{2^{n}}{2^{n}+1}$ in the middle, multiply by $\frac{2^{n+1}+1}{2(2^n+1)}$.
+    \item Put $x - \epsilon = x\cdot \frac{2^{n+1}+1}{2(2^n+1)}$.
+    \item Then $x\cdot \frac{2^{n+1}+1}{2(2^n+1)} < \frac{2^{n}}{2^{n}+1} \le x$, and multiply by $\frac{2(2^n+1)}{2^{n+1}+1}$ this inequality.
+    \item Then we obtain $x < \frac{2^{n+1}}{2^{n+1}+1} \in A$.
+    \item Since 1 is an upper bound for A and $x \nless 1$, $supA = 1$.
+
+\end{itemize}
+
+
+
+\newpage
+\textbf{Question 6}\\
+Archimedean property and variations
+\begin{enumerate}[label=(\roman*)]
+    \item Prove the Archimedean property of the real numbers directly from the least upper bound axiom.
+        \begin{itemize}
+            \item Suppose $x,y \in \mathbb{R}$ such that $\;x>0.$ Then $\exists\; n\in \mathbb{N}$ such that $y<nx$.
+            \item Let A be the set of all $nx$, and $\alpha = supA$.
+            \item Consider $x>0 \Leftrightarrow -x<0.$ Then $\alpha - x < \alpha$.
+            \item Consider, further, an integer $m$ such that $\alpha - x < mx < \alpha$ where $mx \in A$ and $\alpha-x$ is lower bound of A.
+            \item Then $\alpha - x < mx \Leftrightarrow \alpha < (m+1)x$. 
+            \item Since $(m+1)x \in A$, $\alpha$ cannot be a supremum of A.
+            \item Therefore there exists such $n$ satisfies $y<nx$.
+        \end{itemize}
+    
+    \item Show that for any pair of real numbers $x < y$ there is a rational number $r \in \mathbb{Q}$ with $x < r< y$.
+        \begin{itemize}
+            \item $x<y \Leftrightarrow 0<y-x.$ By Archimedean Property, $\exists\; n$ such that\\ $1<n(y-x) \Leftrightarrow 1+nx < ny$ where $n \in \mathbb{N}$.
+            \item Consider integers $m_1, m_2$ such that $-m_1 < nx, nx<m_2$.
+            \item Consider, further, $m$ such that $-m_2 < m < m_1$, $m-1 < nx \le m$
+            \item Then we obtain an inequality $nx \le m< nx+1 < ny \Leftrightarrow nx \le m < ny$
+            \item Further, $x\le\frac{m}{n}<y$. Obviously $\frac{m}{n} \in \mathbb{Q}$ since both $m,n \in \mathbb{Z} \subset \mathbb{Q}.$
+            \item We proved such $r$ between $x$ and $y$.
+        \end{itemize}
+    
+    \item Show that the set $A = \{3n|n\in \mathbb{N}\}$ is unbounded, i.e. show that for every real number $x$, there is an integer $n$ with $3n>x$.
+        \begin{itemize}
+            \item Suppose not. Suppose $A$ is bounded.
+            \item Then $\exists\; \alpha = supA$ such that $x \le \alpha\;\;\forall \; x\in A$.
+            \item However, by Archimedean Property, $n\cdot 1 > x \Leftrightarrow 3n > n > x$.
+            \item Hence the set $A$ is unbounded.
+        \end{itemize}   
+        
+    \item Show that the set $\{\frac{n^2}{n+1}|n\in\mathbb{N}\}$ is unbounded.
+        \begin{itemize}
+            \item Suppose not. Suppose $A$ is bounded.
+            \item Then $\exists\; \alpha = supA$ such that $x \le \alpha\;\;\forall\;x\in A$.
+            \item However, by Archimedean Property, $n\cdot 1 > x \Leftrightarrow n\cdot \frac{n}{n+1} > x.$
+            \item Hence the set $A$ is unbounded.
+        \end{itemize}
+    
+    \newpage
+    \item Show that the set $\{n!|n\in\mathbb{N}\}$ is unbounded.
+        \begin{itemize}
+            \item Suppose not. Suppose $A$ is bounded.
+            \item Then $\exists\; \alpha = supA$ such that $x \le \alpha\;\;\forall\;x\in A$.
+            \item However, by Archimedean Property, $n\cdot 1 > x \Leftrightarrow n! > n > x$.
+            \item Hence the set A is unbounded.
+        \end{itemize}
+    \item Show that the set $\{\sqrt{n}|n\in\mathbb{N}\}$ is unbounded.
+        \begin{itemize}
+            \item Suppose not. Then $\exists\; \alpha = supA$ such that $\sqrt{n} \le \alpha$.
+            \item Consider $\sqrt{n+1}$ such that $\alpha < \sqrt{n+1}$.
+            \item In order $\sqrt{n+1}$ make to $\sqrt{n}$, multiply by $\frac{\sqrt{n}}{\sqrt{n+1}}$.
+            \item Put $\alpha - \epsilon = \alpha \cdot \frac{\sqrt{n}}{\sqrt{n+1}}$ where $\alpha-\epsilon < \sqrt{n} \le \alpha$.
+            \item Then $\alpha \cdot \frac{\sqrt{n}}{\sqrt{n+1}} < \sqrt{n} < \alpha$, and multiply by $\frac{\sqrt{n+1}}{\sqrt{n}}$.
+            \item Then we obtain $\alpha < \sqrt{n+1} \in A$.
+            \item Hence we showed that $\alpha$ is not $supA$.
+            \item Thus $A$ is unbounded.
+        \end{itemize}
+    
+    \item Let $A = \{a_1,a_2,a_3,...\}$ be a set of real numbers where $a_{n+1} \ge a_n + 1$ holds for all $n \in \mathbb{N}$. Show that $A$ is unbounded.
+        \begin{itemize}
+            \item Proof by contradiction: Suppose $\exists\;\alpha = supA$.
+            \item Then we can obtain $\alpha - \epsilon < a_n \le \alpha$.
+            \item Fix $\epsilon =1$. $\alpha - 1 < a_n \Leftrightarrow \alpha < a_n + 1 \le a_{n+1} \in A$. 
+            \item Hence $\alpha \neq supA$.
+            \item We proved that $A$ is unbounded.
+        \end{itemize}
+\end{enumerate}
+
+\newpage
+\textbf{Question 7}\\
+Let $E = \{\frac{1}{n}|n\in \mathbb{N}\}$, and let $F = E \cup {0}$. Find all the limit points of $E$ and of $F$. Are either of $E$ or $F$ closed?
+\begin{itemize}
+    \item Recall the definition limit point. A limit point is a point such that $\{N_\epsilon(x) \cap E\} \setminus \{x\}$.
+    \item Let $x = 0$. Then choose an arbitrary $\epsilon$; the interval is becoming $(0-\epsilon,\; 0+\epsilon)$. 
+    \item No matter how it is small, there must be $\frac{1}{n} $ such that $\frac{1}{n} < 0+\epsilon$
+    \item We proved $\exists$ a point within the interval other than $x=0$.
+    \item Hence 0 is a limit point of E.\\
+    
+    \item Meanwhile, consider any other point. Suppose $x = 1$.
+    \item Then the interval is $(1-\epsilon,\;1+\epsilon)$.
+    \item However, in case where $\epsilon <\frac{1}{2}$, $\{N_\epsilon(x) \cap E\} \setminus \{x\} = \phi$.
+    \item Hence any other $\frac{1}{n}$ is unable to be a limit point.
+    \item Thus E is an open set.\\
+    
+    \item Since 0 is the only and all limit point of E, $F = E \cup \{0\}$ is a closed set by definition.
+\end{itemize}
+
+
+\newpage
+\textbf{Question 8}\\
+Let $A = \{\frac{m}{m+2}|m\in\mathbb{N}\}$ and $B= \{\frac{m}{m-2}|m\in\mathbb{N}, m\ge 3\}$. Find all limit points of the set A and of the set B.
+\begin{itemize}
+    \item Since $\frac{m}{m+2} < \frac{m+2}{m+2} = 1$, 1 is an upper bound for A.
+    \item Since $1 = \frac{m-2}{m-2} < \frac{m}{m-2}$, 1 is an lower bound for B.\\
+    
+    \item Each $\frac{m}{m+2} $ or $\frac{m}{m-2}$ is an isolated point because $\{N_\epsilon(x) \cap \{\frac{m}{m+2} \text{ or }\frac{m}{m-2}\} \} \setminus \{x\} = \phi$\\ for some $\epsilon$.
+    \item However, in case where $x = 1$, $\{N_\epsilon(x) \cap \{\frac{m}{m+2} \text{ or }\frac{m}{m-2}\} \} \setminus \{x\} \neq \phi\;\;\forall\;\epsilon$.
+    \item Thus all limit points of the set A and B is $\{1\}$.
+\end{itemize}
+
+\vspace{1.5\baselineskip}
+
+\textbf{Question 9}\\
+Find a subset $E \subset \mathbb{R}$ with exactly three limit points. (justify your answer.)
+$$
+\{\frac{1}{n} \;|\; n\in\mathbb{N} \} \cup \{1+\frac{1}{n}\;|\; n\in\mathbb{N} \} \cup \{2+\frac{1}{n} \;|\; n\in\mathbb{N} \}
+$$
+Proof was given in Question 7.
+
+\newpage
+\textbf{Question 10}\\
+Let $E \subset \mathbb{R}$ be a bounded subset, and let $m$ be a limit point of E. Show that $m \le supE$.
+\begin{itemize}
+    \item Proof by contradiction: Suppose $m > supE$.
+    \item If $m$ is a limit point, then $m\in \{\{B_\epsilon (x) \cap E\}\setminus\{x\}\;|\; x\in \mathbb{R}, \epsilon >0 \} \neq \phi$.
+    \item Consider $\epsilon = \frac{d(m, supE)}{2}$. Then $m$ is strictly detached from $E$.
+    \item i.e. $m\in \{\{B_\epsilon (x) \cap E\}\setminus\{x\}\;|\; x\in \mathbb{R}, \epsilon >0 \} = \phi$ meaning $m$ is not a limit point.
+    \item Thus $m \le supE$.
+\end{itemize}
+
+\vspace{1.5\baselineskip}
+\textbf{Question 11}\\
+Let $(X,d)$ be some metric space, $a\in X$ some point in $X,$ and $r>0$.
+\begin{enumerate}[label=(\roman*)]
+    \item Show that the set $E = \{x\in X\;|\;d(x,a) >r\}$ is open.
+        \begin{itemize}
+            \item Consider $h>0$ such that $d(x,a) = r + h$ for some $h$, and let $\epsilon = \frac{h}{2}$.
+            \item Then $\{\{B_\epsilon (x) \cap E\}\setminus\{x\}\;|\; x\in \mathbb{R}, \epsilon >0 \} = \phi$
+            \item i.e. $E^c \cap B_\epsilon(x) = \phi$, so $x$ is an interior point of $E$.
+            \item Thus $E$ is open.
+        \end{itemize}
+        
+    \item Let F be some subset of $B_r(a)$, and let $p$ be a limit point of $F$. Show that $d(p,a) \le r$.
+        \begin{itemize}
+            \item Suppose not: $d(p,a) > r$.
+            \item Then $\exists\; h$ such that $d(p,a)=r + h$. 
+            \item Consider $h>0$ such that $d(p,a) = r + h$ for some $h$, and let $\epsilon = \frac{h}{2}$.
+            \item Then $\{\{B_\epsilon (p) \cap E^c\}\setminus\{p\}\;|\; p\in \mathbb{R}, \epsilon >0 \} = \phi$, meaning $p$ is not a limit point.
+            \item Hence $d(p,a) \le r$ so that $p$ is to be a limit point.
+        \end{itemize}
+\end{enumerate}
+
+\vspace{1.5\baselineskip}
+\textbf{Question 12}\\
+Find all limit point points of the set $\mathbb{N} \subset \mathbb{R}$.
+\begin{itemize}
+    \item Since $n\in \mathbb{N}$ is discrete, $\exists\; \epsilon >0$ such that $\{\{N_\epsilon (x) \cap \mathbb{N}\}\setminus\{x\}\;|\; x\in \mathbb{R} \} = \phi$.
+    \item Thus the set of all limit points of $\mathbb{N}$ is $\phi$.
+\end{itemize}
+
+
+\newpage
+\vspace{1.5\baselineskip}
+\textbf{Question 13}\\
+(About open and closed sets) Notation: $A^c = X\setminus A = \{x\in X\;|\; x\notin A \}$.
+\begin{enumerate}[label=(\roman*)]
+    \item True or false? if $A \subset \mathbb{R}$ is open then $A$ contains none of its limit points (i.e. prove the statement, or give a counterexample.)
+        \begin{itemize}
+            \item By the definition of open set, if $\{E^c \cap N_\epsilon(x)\} = \phi$, then the set is open.
+            \item Hence $\exists$ a limit point of A $p \in\{\{B_\epsilon(p) \cap A\}\setminus\{p\}\} \neq \phi$.
+            \item Therefore this statement is false.
+        \end{itemize}
+    
+    \item True or false? If $A \subset \mathbb{R}$ is open then there is a limit point $p$ of $A$ that lies outside $A$.
+        \begin{itemize}
+            \item Consider a point $p$ which is exactly on the boundary.
+            \item $p \notin A$, but $\{\{B_\epsilon(p) \cap A\}\setminus\{p\}\} \neq \phi$.
+            \item Hence this statement is true.
+        \end{itemize}
+    
+    \item True or false? If $E\subset X$ is closed, then $E$ contains no limit points of its complement(i.e.$E$ contains no limit points of $E^c$.)
+        \begin{itemize}
+            \item $E^c$ is an open set for this case.
+            \item As we considered in (i), one of limit points of an open set $E^c$ which is exactly on the boundary is not an element of $E^c$, but it is still a limit point of $E^c$.
+            \item This statement is false.
+        \end{itemize}
+    
+    \item True or false? If $E\subset X$ is open, then $E$ contains no limit points of its complement(i.e.$E$ contains no limit points of $E^c$.)
+        \begin{itemize}
+             \item Suppose any point $p \in E^c$
+             \item Consider $h$ such that $r+h = d(x,p)$ for some $h>0$, $x\in E$, and let $\epsilon = \frac{h}{2}$.
+             \item Then $\{\{B_\epsilon(p) \cap E\}\setminus\{p\}\} = \phi$. i.e. there is no such $p$ that is a limit point of $E$.
+             \item Therefore this statement is true.
+        \end{itemize}
+\end{enumerate}
+
+\end{document}

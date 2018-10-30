@@ -165,40 +165,67 @@
 A sequence of real numbers $(x_n)$ converges to $x$ if 
 $\forall\;\epsilon > 0\;\exists\;\N\in\mathbb{N}$ such that $\forall\; n \ge \mathbb{N}, \; |x_n - x| < \epsilon$.\\
 
-\textbf{Theorem 3.8} (Bolzano-Weierstrass)\\
+\textbf{Theorem} (Bolzano-Weierstrass)\\
 Any bounded sequence $(x_n)$ in $\mathbb{R}$ has a convergent subsequence.\\
 
 {\sl Proof.}
+$$\includegraphics[height=2.7cm, width=13cm]{bolzano.png}$$
 \begin{itemize}
-    \item Let $E = \{x_n\;|\; n \in \mathbb{N}\}$. 
-    \item If $E$ is finite, then $\exists$ a subsequence $(x_{n_k})$ such that $x_{n_1}=x_{n_2}=x_{n_3}=\ldots=x_{n_k}=\ldots$ which is convergent.
-    \item Suppose $E$ is finite.
-    \item Now as $E$ is bounded, $\exists\;a<b\in\mathbb{R}$ such that $E\subset[a,b].$
+    \item Suppose sequence $E = \{x_n\;|\; n \in \mathbb{N}\}$. 
+    \item If $E$ is finite, then $\exists$ a subsequence $(x_{n_k})$ such that $x_{n_1}=x_{n_2}=x_{n_3}=\ldots=x_{n_k}=\ldots$ which is convergent.\\
+    
+    \item On the other hand, suppose $E$ is an infinite sequence.
+    \item Now as $E$ is bounded, $\exists\;a<b\in\mathbb{R}$ such that $E\subset[a,b],$ and let $I_0=[a,b]$.
+    \item Heine-Borel Theorem, $E$ has a limit point in $[a,b]\subset\mathbb{R}.$\\
+    {\sl Recall that since $E$ is a closed and bounded $E$ is compact and has a limit point inside.}
+    \item Let the limit point to be $x \in[a,b].$\\
+    
+    
+    \item When $I_0$ is equally divided into two parts, infinitely many $x_n$ must be contained in, at least, one of two parts. Let us call it $I_1$.
+    \item Reapting this steps, and we obtain $I_0,I_1,I_2,...\qquad$ i.e. $I_0\supset I_1\supset I_2\supset \ldots$
+    
+    \item Then choose $n_1\in I_1$, $n_2\in I_2$ such that $n_1<n_2$, $n_3\in I_3$ such that $n_1<n_2<n_3,\;\ldots$
+    \item Then $\{x_{n_k}\}$ is a subsequence of $\{x_n\}$, and $x_{n_k}$ and the limit point $x$ are also contained in $I_k$.
+    \item Thus we can derive that 
+    $$|x_{n_k}-x| < \frac{M}{2^k}$$
+    where $M = \frac{b-a}{2}$, so $\frac{M}{2^k}$ is the length of $I_k$.
+    \item Since $\lim\limits_{n\to\infty} \frac{M}{2^n} = 0$, this implies that $\lim\limits_{k\to\infty} x_{n_k} = x$
 \end{itemize}\\
 
+\vspace{1\baselineskip}
+\textbf{Definition}\\
+A sequence $(x_n)$ in $\mathbb{R}$ is \textbf{Cauchy} if $\forall\;\epsilon > 0,\; \exists \; N \in \mathbb{N}$ such that $\forall\;n,m \ge \mathbb{N}|,\; |x_n - x_m| < \epsilon$.\\
 
-\textbf{Definition 3.9}\\
-A sequence $(x_n)$ in $|mathbb{R}$ is Cauch if $\forall\;\epsilon > 0, \exists \; N \in \mathbb{N}$ such that $\forall\;n,m \ge \mathbb{N}|, |x_n - x_m| < \epsilon$.\\
+{\sl Remark.} Cauchy does not require a \underline{known} limit point.\\
 
-\textbf{Remark 3.10}\\
-Cauchy does not ??????????????????? \\
+\vspace{1\baselineskip}
+\textbf{Theorem} $(x_n)$ converges if and only if it is Cauchy.\\
 
-\textbf{Theorem 3.11}\\
-$(x_n)$ converges if and only if it is Cauchy.\\
+{\sl Proof.}
+\begin{itemize}
+    \item $\Rightarrow$ Suppose $(x_n)$ converges, $x_n \rightarrow x$. 
+    \item Let $\epsilon > 0$. Then $\exists\; N \in \mathbb{N}$ such that $\forall\;n\ge N,\; |x_n - x| < \frac{\epsilon}{2}.$
+    \item Now if $n,m \ge N,\; |x_n - x_m| \le |x_n-x|+|x-x_m| < \epsilon.$\\
+    
+    \item $\Leftarrow$ Suppose $(x_n)$ is Cauchy.
+    \item Step 1: $(x_N)$ is bounded.
+    \begin{itemize}
+        \item $\exists\; n \in \mathbb{N}$, such that $\forall\;n,m \ge N, |x_n-x_m|<1$.
+        \item Thus $\forall\;n\ge N,\; |x_n| \le max(|x_n| +1, |x_1|,...,|x_N|)\le M\in\mathbb{R}$. \hfiill i.e. $(x_n)$ is bounded.
+    \end{itemize}
+    
+    \item Step 2: Find the limit.
+    \begin{itemize}
+        \item By Bolzano-Weierstrass, $\exists$ a subsequence $(x_{n_k})$ such that $(x_{n_k}) \rightarrow x \in \mathbb{R}$.
+        \item Let $\epsilon > 0$. Take $N_1 \in \mathbb{N}$ such that $\forall\; k\ge N_1,\; |x_{n_k} - x| <\frac{\epsilon}{2}.$
+        \item Then $\exists\; N_2 > n_{N_1}$ such that $\forall\; n,m \ge N_2,\; |x_n -x_m| <\frac{\epsilon}{2}.$
+        \item Now if $n \ge N_2,\; |x_n -x| \le |x_n -x_{n_{N_2}}| + |x_{n_{N_2}} - x|$ as $n_{N_2}\ge N_2 > N_1.$
+    \end{itemize}
+\end{itemize}
 
-\textbf{Pf.}\\
-Suppose $x_n \rightarrow x$. Let $\epsilon > 0$. Then $\exists\; N \in \mathbb{N}$ such that $\forall\;n\ge N, |x_n - x| < \frac{\epsilon}{2}.$ Now if $n,m \ge N, |x_n - x_m| \le |x_n-x|+|x-x_m| < \epsilon.$ \\
 
-Suppose $x_n)$ is Cauchy.\\
-Step 1: $(x_N)$ is bounded.\\
-$\exists\; n \in \mathbb{N}$, such that $\forall\;n,m \ge N, |x_n-x_m|<1$.\\
-Thus $\forall\;n\ge N, |x_n| \le max(|x_N| +1, |x_1|,...,|x_N|)$.\\
 
-Step 2: By $B - W, \exists$ a subsequence $(x_{n_k})$ such that $(x_{n_k} \rightarrow x \in \mathbb{R}$.\\
-
-Let $\epsilon > 0$. Take $N_1 \in \mathbb{N}$ such that $\forall\; k\ge N_1, |x_{n_k} - x| <\frac{\epsilon}{2}.$ Then $\exists N_2 > n_{N_1}$ such that $\forall\; n,m \ge N_2, |x_n -x_m| <\frac{\epsilon}{2}.$ Now if $n \ge N_2, |x_N -x| \le |x_n -x_{n_{N_2}}| +x_{n_{N_2}} - x|$ as $n_{N_2}\ge N_2 > N_1.$\\
-
-\textbf{Theorem 3.12}
+\textbf{Theorem}
 \begin{enumerate}[label=(\roman*)]
     \item $\forall\;p>0, \frac{1}{n^p} \rightarrow 0$ as $n \rightarrow \infty$.
     \item $\forall\;x>0, x^{\frac{1}{n}} \rightarrow 1$ as $n \rightarrow \infty$.
@@ -207,61 +234,98 @@ Let $\epsilon > 0$. Take $N_1 \in \mathbb{N}$ such that $\forall\; k\ge N_1, |x_
     \item If $0<x<1, x^n \rightarrow 0$ as $n \rightarrow \infty$.
 \end{enumerate}
 
-\textbf{Pf}
+{\sl Proof.}
 \begin{enumerate}[label=(\roman*)]
     \item Exercise
-    \item Suppose $x>1$.
-    \\ Let $x_n = x^{\frac{1}{n}} - 1>0$.
-    \\ By the binomial theorem = $(1+x_n)^n \ge 1+nx_n$.
-    \\ So $0 < x_n < \frac{x-1}{n} \rightarrow 0$ as $n\rightarrow \infty$.
-    \\ Hence $x+n \rightarrow 0$. i.e. $x^{\frac{1}{n}} \rightarrow 1$.
-    \\ In the case(?) $0<x<1, \frac{1}{2} > 1,$ so $\frac{1}{x}^{\frac{1}{n}} \rightarrow 1$.
-    \\ So $x^{\frac{1}{n}} = \frac{1}{\frac{1}{2}^{\frac{1}{n}}} \rightarrow \frac{1}{1} = 1$
+    \item 
+    \begin{itemize}
+        \item Suppose $x>1$.
+        \item By the binomial theorem = $(1+x_n)^n \ge 1+nx_n$.
+        \item So $0 < x_n < \frac{x-1}{n} \rightarrow 0$ as $n\rightarrow \infty$.
+        \item Hence $x+n \rightarrow 0$. i.e. $x^{\frac{1}{n}} \rightarrow 1$.
+        \item In the case(?) $0<x<1, \frac{1}{2} > 1,$ so $\frac{1}{x}^{\frac{1}{n}} \rightarrow 1$.
+        \item So $x^{\frac{1}{n}} = \frac{1}{\frac{1}{2}^{\frac{1}{n}}} \rightarrow \frac{1}{1} = 1$
+    \end{itemize}
+
+    \item 
+    \begin{itemize}
+        \item Let $x_n = n^{\frac{1}{n}} -1 \ge 0$
+        \item Then $n = (1+x_n)^n \ge \frac{n(n-1)}{2}x_n^2$.
+        \hfill (if approach like (ii) not $\to 0$)
+        \item So $0 \le x_n \le \sqrt{\frac{2}{n-1}}$ for $n\ge 2$.
+    \end{itemize}
     
-    \item Let $x_n = n^{\frac{1}{n}} -1 \ge 0$
-    \\ Then $n = (1+x_n)^n \ge \frac{n(n-1)}{2}x_n^2$.
-    \\ So $0 \le x_n \le \sqrt{\frac{2}{n-1}}$ for $n\ge 2$.
     
-    \item Let $p \in \mathbb{R}, x>0$.
-    \\ Take $k \in \mathbb{N}$ such that $k > p$.
-    \\ Suppose $n > 2k$.
-    \\ Then $(1+x)^n \ge \binom{n}k x^k = \frac{n(n-1)\ldots(n-k+1)}{k!} \ge \frac{n^k}{2^k k!} x^k.$
-    \\ So $0< \frac{n^p}{(1+x)^n} \le \frac{2^k k!}{x^k} n^{p-k} \rightarrow 0$ as $k > p$.
+    \item 
+    \begin{itemize}
+        \item Let $p \in \mathbb{R}, x>0$.
+        \item Take $k \in \mathbb{N}$ such that $k > p$.
+        \item Suppose $n > 2k$.
+        \item Then $(1+x)^n \ge \binom{n}k x^k = \frac{n(n-1)\ldots(n-k+1)}{k!} \ge \frac{n^k}{2^k k!} x^k.$
+        \item So $0< \frac{n^p}{(1+x)^n} \le \frac{2^k k!}{x^k} n^{p-k} \rightarrow 0$. 
+        \hfill ($p-k<0$ as $k>p$)
+    \end{itemize}
+    
     
     \item $0<x<1$.
-    \\ So $\frac{1}{(1+x)^n} \rightarrow 0$ by iv). (choose p=0).
-    \\ If $x \in (0,1), \exits\; y>0$ such that $x = \frac{1}{1+y}$.
-    \\ So $x^n = \frac{1}{(1+y)^n} \rightarrow 0$.
-    
+    \begin{itemize}
+        \item So $\frac{1}{(1+x)^n} \rightarrow 0$ by (iv). (choose p=0).
+        \hfill (where $1+x$ is an arbitrary number)
+        \item If $x \in (0,1), \exits\; y>0$ such that $x = \frac{1}{1+y}$.
+        \item So $x^n = \frac{1}{(1+y)^n} \rightarrow 0$.
+    \end{itemize}
 \end{enumerate}
 
 \newpage
-\textbf{3.2 Sequence in a metric space}\\
-\textbf{Definition 3.13}\\
+\section{Sequence in a metric space}\\
+\textbf{Definition}\\
 Let $(X,d)$ be a metric space, $(x_n)$ a sequence in $X, x \in X$. We say $(x_n)$ converges to x if $\forall\;\epsilon > 0, \exists\;N\in \mathbb{N}$ such that  for all $n\ge N, d(x_n,x) < \epsilon$. We note $x_n \rightarrow x,$ or $\lim_{n\rightarrow \infty} x_n = x$ or.\\
 
-\textbf{Ex}
+\vspace{1\baselineskip}
+\textbf{Example}
 \begin{enumerate}[label=(\roman*)]
-    \item In $\mathbb{R}, \frac{1}{n} \rightarrow 0$.
-    \item In (0,\infty), \frac{1}{n} does not converge.
-        $$
-        x_n = (-1)^n.\;\; B_1(1) Need to be fixed.
-        $$
- \end{enumerate}
+    \item In $\mathbb{R}, however, \frac{1}{n} \rightarrow 0$.
+    
+    \item In $(0,\infty),\; \frac{1}{n}$ does not converge.
+\end{enumerate}
  
- \textbf{Theorem 3.14}\\
- Let $X,d)$ be a metric space, $(x_n) \subset X.$
+\vspace{1\baselineskip}
+\textbf{Theorem}\\
+ Let $(X,d)$ be a metric space, $(x_n) \subset X.$
  \begin{enumerate}[label=(\roman*)]
      \item  $x_n \rightarrow x$ iff every neighborhood of $x$ contains all, but finitely many of the terms $x_n$.
+     \begin{itemize}
+         \item $x_n = (-1)^n.\;b_1(1)$ contains infinitely many $x_n$.
+         \item $x_n$ does not converge to 1.
+     \end{itemize}
      \item If $x\in X, y\in X, x_n \rightarrow x, x_n\rightarrow y, $then $x=y$.
      \item If $(x_n)$ converges, it is bounded.
      \item If $\E \subset X$ and $x$ is a limit point of $E$, then $\exists$ a sequence in $(x_n) \subset E$ such that $x_n \rightarrow x$.
  \end{enumerate}
  
- \textbf{Example}\\
- Take $\mathbb{R}, d_{disc}), d_{disc}(x,y) = 1 \text{ if } x \neq y \text{ or } 0 \text{ if } x=y$.\\
- Consider $x_n = \frac{1}{n}.$\\
- Note $d(x_n,0) = 1 \forall\; n$ . So $\{\frac{1}{x_n}\} \subset B_2(0),$ so ($x_n$) is bounded. But if $x\in \mathbb{R}, $ eventually, $x_n \neq x \forall\; n$, so ($d(x_n, x) = 1 \;\orall\;n.$ So $x_n \nrightarrow x\;\forall\;x\in\mathbb{R}$>
+ \vspace{1\baselineskip}
+ \textbf{Example}
+ \begin{itemize}
+     \item Take $(\mathbb{R}, d_{disc}).$
+$$
+ d_{disc}(x,y) =
+ \begin{cases}
+ 1 \text{ if } x \neq y\\
+ 0 \text{ if } x = y
+ \end{cases}
+ \hfill (disc \text{ refers to discrete})$$
+ 
+ \item Consider $x_n = \frac{1}{n}.$
+ \item Note $d(x_n,0) = 1\;\; \forall\; n$ . So $\{{x_n}\} \subset B_2(0);$ hence ($x_n$) is bounded. 
+ \item But if $x\in \mathbb{R}, $ eventually, $x_n \neq x\;\; \forall\; n$
+ \hfill (all $x$ are distinct)
+ \item so ($d(x_n, x) = 1 \;\;\forall\;n.$ 
+ \item So $x_n \nrightarrow x\;\;\forall\;x\in\mathbb{R}$\hfill
+ i.e. It does not converge.
+ \end{itemize}
+ 
+  
+
 
 \end{block}
 
