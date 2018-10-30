@@ -82,7 +82,7 @@ $$d(f(x_1),f(x_2))\le Ld(x_1,x_2)$$ for all $x_1,x_2\in X$.
 Show that every Lipshitz function is continuous.
 \begin{itemize}
     \item Fix $c\in X$, and let $x_1\in X$ converges to $c$ and $\epsilon>0$ be given.
-    \item Suppose $\exists\; N$ such that $n>N$ and $|x_1 - c| \le \epsilon / L$.
+    \item Suppose $\exists\; N$ such that $n>N$ and $d(x_1 - c) \le \epsilon / L$.
     \item Now we hold, $$d(f(x_1)-f(c)) \le Ld(x_1,c)\le \epsilon$$
     \item i.e. $f(x_1)$ converges to $f(c)$.
     \item The continuity of $f$ on $X$ is proved.
@@ -93,10 +93,10 @@ Show that every Lipshitz function is continuous.
 \textbf{Question 7.3}\\
 Let $p\in X$ be a fixed point. Prove that the function $f(x)=d(x,p)$ is Lipschitz, and hence continuous.
 \begin{itemize}
-    \item Suppose $\exists\;x,y\in X$ such that $f(x) = d(x,p) \le d(x,y)+d(y,p) = d(x,y)+ f(y)$
-    \item$\Leftrightarrow f(x)-f(y) \le d(x,y) \Leftrightarrow f(y)-f(x) \le d(y,x)=d(x,y)
-    \Leftrightarrow d(f(x),f(y)) \le d(x,y)$
-    \item As there exists Lipshitz constant which is 1, $|f(x)-f(y)|\le 1\cdot d(x,y)$, $f(x)$ is Lipschitz.
+    \item Suppose $x,y\in X$. So $f(x) = d(x,p) \le d(x,y)+d(y,p) = d(x,y)+ f(y)$
+    \item $\Leftrightarrow f(x)-f(y) \le d(x,y) \Leftrightarrow f(y)-f(x) \le d(y,x)=d(x,y)
+    \Leftrightarrow |f(x),f(y)| \le d(x,y)$
+    \item As there exists Lipshitz constant which is 1, $$|f(x)-f(y)|\le 1\cdot d(x,y),$$ $f(x)$ is Lipschitz and, hence continuous.
     
 \end{itemize}
 
@@ -105,10 +105,13 @@ Let $p\in X$ be a fixed point. Prove that the function $f(x)=d(x,p)$ is Lipschit
 Let $E\subset X$ and define a function $f\colon X\rightarrow \mahttbb{R}$ by $$f(x) = \inf\{d(x,p)\;|\;p\in E\}.$$
 Show that $f$ is Lipschitz, and hence continuous.
 \begin{itemize}
+    \item Suppose $x,y\in X$. 
+    \item So $f(x) = \inf\{d(x,p)\;|\;p\in E\}\le d(x,p) \le d(x,y)+d(y,p).$
+    \item And the by definition of $f$, $f(y) = \inf\{d(y,p)\;|\;p\in E\}\le d(y,p).$
+    \item Then $f(x)-f(y) \le \{d(x,y)+d(y,p)\}-d(y,p) = d(x,y) \Leftrightarrow f(y)-f(x) \le d(y,x).$
+    \item Hence $|f(x)-f(y)| \le 1\cdot d(x,y)$.
+    \item The proper Lipschitz constant of $f$ which is 1, and its continuity are proved.
     
-    
-    \item $f(x) = \inf\{d(x,p)\} \le d(x,p) \le d(x,y)+d(y,P)\;\Leftrightarrow\;f(x)-d(x,y)\le d(y,p)=f(y)$
-    \item $f(x)-f(y)\le d(x,y) \Leftrightarrow f(y)-f(x) \le d(y,x)=d(y,x) \Leftrightarrow d(f(x),d(y)) \le d(x,y)$
 \end{itemize}
 
 

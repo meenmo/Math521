@@ -54,6 +54,7 @@
  
 \begin{document}
 \section{Sequences of Real Numbers}
+\subsection{Convergent Sequence}
 \begin{block}A sequence is a map from $\mathbb{N}$ to a set. So a sequence of real numbers is a map $x\colon \mathbb{N}\to\mathbb{R}$ where we write $x_n=x(n), (x_n), \{x_n\}, \text{ or } x_1,x_2,...$.\end{block} \\
 
 \begin{block}{\bf Definition} Let $(x_n)$ be a sequence in $\mathbb{R}\colon\; x\in\mathbb{R}$. We say $x_n$ converges to $x$ and write $x_n\to x$ or $\lim\limits_{n\to\infty} x_n = x$ if $\forall\;\epsilon>0, \exists\;N\in\mathbb{N}$ such that $\forall\;n\ge N,\; |x_n-x|<\epsilon$. Then we call $x$ the limit of $(x_n)$.\end{block}
@@ -115,11 +116,153 @@
     %\item Then $\forall\;n\ge N=\max(N_1,N_2),\;|$
     
     \item $x_ny_n - xy \to 0\;\Leftrightarrow\; x_ny_n\to xy$.
-    \begin{itemize}
-        \item 
-    \end{itemize}
+    \item 
+\end{enumerate}
+\end{block}
+
+\vspace{1\baselineskip}
+\begin{block}{\bf Definition} Monotone Sequence: A sequence $(x_n)$ is called
+\begin{enumerate}[label=(\roman*)]
+    \item {\sl Monotonically Increasing }  if $x_n\le x_{n+1},\;\forall\;n\in\mathbb{N}$
+    \item {\sl Monotonically Decreasing }  if $x_n\ge x_{n+1},\;\forall\;n\in\mathbb{N}$
+    \item {\sl Monotone } if either (i) or (ii)
+    \item {\sl Bounded } if $\exists\;M>0$ such that $|x_n|\le M\;\;\forall\;n\in\mathbb{N}$.
+\end{enumerate}
+
+\vspace{1\baselineskip}
+\begin{block}{\bf Theorem} Let $(x_n)$ be monotone. Then $(x_n)$ is convergent if and only if $(x_n)$ is bounded.\\
+
+{\sl Proof.}
+\begin{itemize}
+    \item Suppose $(x_n)$ is bounded, $x_n\le x_{n+1}\;\;\forall\;n\in\mathbb{N}.$
+    \item Then $E = \{x_n\;|\;n\in\mathbb{N} \}$ is non-empty and bounded.
+    \item So $x=\sup E$ exists in $\mathbb{R}$.
+    \item Let $\epsilon>0,$ then $\exists\;N\in\mathbb{N}$ such that $x-\epsilon<x_N\le x$.
+    \item Now $x-\epsilon <x_N\le x_n\le x\;\;\forall\;n\ge N$ by monotonicity.
+    \item Hence $\forall\;n\ge N,\;|x_n-x|<\epsilon.$
+\end{itemize}
+{\sl Note. }If a sequence is convergent, then it is bounded.
+\end{block}
+\end{block}
+
+\newpage
+\subsection{Subsequences}
+\begin{block}{\bf Definition}\\ Let $(x_n)$ be a sequence. Suppose $(n_k)$ is a sequence in $\mathbb{N}$. Then $(x_{n_k})$ is a {\sl subsequence}.
+
+\vspace{1\baselineskip}
+{\bf Proposition}\\ Let $(x_n)$ be a sequence, then $x_n\to x$ if and only if $x_{n_k}\to x$ for all subsequences $(x_{n_k})$ of $(x_n).$
+
+\vspace{1\baselineskip}
+{\bf Example} $x_n=(-1)^n$
+\begin{itemize}
+    \item Let $n_k=2k$ for $k\in\mathbb{N}$. Then $x_{n_k}=1\;\;\forall\;k$, so $x_{n_k}\to 1$.
+    \item Now let $n_j = 2_j+1,\;j\in\mathbb{N}$. Then $x_{n_j}\to -1$. 
+    \item Hence $(x_n)$ does not converge. 
+\end{itemize}
+
+\subsection{Cauchy Sequences}
+\textbf{Definition}\\
+A sequence of real numbers $(x_n)$ converges to $x$ if 
+$\forall\;\epsilon > 0\;\exists\;\N\in\mathbb{N}$ such that $\forall\; n \ge \mathbb{N}, \; |x_n - x| < \epsilon$.\\
+
+\textbf{Theorem 3.8} (Bolzano-Weierstrass)\\
+Any bounded sequence $(x_n)$ in $\mathbb{R}$ has a convergent subsequence.\\
+
+{\sl Proof.}
+\begin{itemize}
+    \item Let $E = \{x_n\;|\; n \in \mathbb{N}\}$. 
+    \item If $E$ is finite, then $\exists$ a subsequence $(x_{n_k})$ such that $x_{n_1}=x_{n_2}=x_{n_3}=\ldots=x_{n_k}=\ldots$ which is convergent.
+    \item Suppose $E$ is finite.
+    \item Now as $E$ is bounded, $\exists\;a<b\in\mathbb{R}$ such that $E\subset[a,b].$
+\end{itemize}\\
+
+
+\textbf{Definition 3.9}\\
+A sequence $(x_n)$ in $|mathbb{R}$ is Cauch if $\forall\;\epsilon > 0, \exists \; N \in \mathbb{N}$ such that $\forall\;n,m \ge \mathbb{N}|, |x_n - x_m| < \epsilon$.\\
+
+\textbf{Remark 3.10}\\
+Cauchy does not ??????????????????? \\
+
+\textbf{Theorem 3.11}\\
+$(x_n)$ converges if and only if it is Cauchy.\\
+
+\textbf{Pf.}\\
+Suppose $x_n \rightarrow x$. Let $\epsilon > 0$. Then $\exists\; N \in \mathbb{N}$ such that $\forall\;n\ge N, |x_n - x| < \frac{\epsilon}{2}.$ Now if $n,m \ge N, |x_n - x_m| \le |x_n-x|+|x-x_m| < \epsilon.$ \\
+
+Suppose $x_n)$ is Cauchy.\\
+Step 1: $(x_N)$ is bounded.\\
+$\exists\; n \in \mathbb{N}$, such that $\forall\;n,m \ge N, |x_n-x_m|<1$.\\
+Thus $\forall\;n\ge N, |x_n| \le max(|x_N| +1, |x_1|,...,|x_N|)$.\\
+
+Step 2: By $B - W, \exists$ a subsequence $(x_{n_k})$ such that $(x_{n_k} \rightarrow x \in \mathbb{R}$.\\
+
+Let $\epsilon > 0$. Take $N_1 \in \mathbb{N}$ such that $\forall\; k\ge N_1, |x_{n_k} - x| <\frac{\epsilon}{2}.$ Then $\exists N_2 > n_{N_1}$ such that $\forall\; n,m \ge N_2, |x_n -x_m| <\frac{\epsilon}{2}.$ Now if $n \ge N_2, |x_N -x| \le |x_n -x_{n_{N_2}}| +x_{n_{N_2}} - x|$ as $n_{N_2}\ge N_2 > N_1.$\\
+
+\textbf{Theorem 3.12}
+\begin{enumerate}[label=(\roman*)]
+    \item $\forall\;p>0, \frac{1}{n^p} \rightarrow 0$ as $n \rightarrow \infty$.
+    \item $\forall\;x>0, x^{\frac{1}{n}} \rightarrow 1$ as $n \rightarrow \infty$.
+    \item $n^{\frac{1}{n}} \rightarrow 1$ as $n \rightarrow \infty$.
+    \item $\forall\; p\in \mathbb{R}, x>0, \frac{n^p}{(1+x)^n} \rightarrow 0$.
+    \item If $0<x<1, x^n \rightarrow 0$ as $n \rightarrow \infty$.
+\end{enumerate}
+
+\textbf{Pf}
+\begin{enumerate}[label=(\roman*)]
+    \item Exercise
+    \item Suppose $x>1$.
+    \\ Let $x_n = x^{\frac{1}{n}} - 1>0$.
+    \\ By the binomial theorem = $(1+x_n)^n \ge 1+nx_n$.
+    \\ So $0 < x_n < \frac{x-1}{n} \rightarrow 0$ as $n\rightarrow \infty$.
+    \\ Hence $x+n \rightarrow 0$. i.e. $x^{\frac{1}{n}} \rightarrow 1$.
+    \\ In the case(?) $0<x<1, \frac{1}{2} > 1,$ so $\frac{1}{x}^{\frac{1}{n}} \rightarrow 1$.
+    \\ So $x^{\frac{1}{n}} = \frac{1}{\frac{1}{2}^{\frac{1}{n}}} \rightarrow \frac{1}{1} = 1$
+    
+    \item Let $x_n = n^{\frac{1}{n}} -1 \ge 0$
+    \\ Then $n = (1+x_n)^n \ge \frac{n(n-1)}{2}x_n^2$.
+    \\ So $0 \le x_n \le \sqrt{\frac{2}{n-1}}$ for $n\ge 2$.
+    
+    \item Let $p \in \mathbb{R}, x>0$.
+    \\ Take $k \in \mathbb{N}$ such that $k > p$.
+    \\ Suppose $n > 2k$.
+    \\ Then $(1+x)^n \ge \binom{n}k x^k = \frac{n(n-1)\ldots(n-k+1)}{k!} \ge \frac{n^k}{2^k k!} x^k.$
+    \\ So $0< \frac{n^p}{(1+x)^n} \le \frac{2^k k!}{x^k} n^{p-k} \rightarrow 0$ as $k > p$.
+    
+    \item $0<x<1$.
+    \\ So $\frac{1}{(1+x)^n} \rightarrow 0$ by iv). (choose p=0).
+    \\ If $x \in (0,1), \exits\; y>0$ such that $x = \frac{1}{1+y}$.
+    \\ So $x^n = \frac{1}{(1+y)^n} \rightarrow 0$.
     
 \end{enumerate}
+
+\newpage
+\textbf{3.2 Sequence in a metric space}\\
+\textbf{Definition 3.13}\\
+Let $(X,d)$ be a metric space, $(x_n)$ a sequence in $X, x \in X$. We say $(x_n)$ converges to x if $\forall\;\epsilon > 0, \exists\;N\in \mathbb{N}$ such that  for all $n\ge N, d(x_n,x) < \epsilon$. We note $x_n \rightarrow x,$ or $\lim_{n\rightarrow \infty} x_n = x$ or.\\
+
+\textbf{Ex}
+\begin{enumerate}[label=(\roman*)]
+    \item In $\mathbb{R}, \frac{1}{n} \rightarrow 0$.
+    \item In (0,\infty), \frac{1}{n} does not converge.
+        $$
+        x_n = (-1)^n.\;\; B_1(1) Need to be fixed.
+        $$
+ \end{enumerate}
+ 
+ \textbf{Theorem 3.14}\\
+ Let $X,d)$ be a metric space, $(x_n) \subset X.$
+ \begin{enumerate}[label=(\roman*)]
+     \item  $x_n \rightarrow x$ iff every neighborhood of $x$ contains all, but finitely many of the terms $x_n$.
+     \item If $x\in X, y\in X, x_n \rightarrow x, x_n\rightarrow y, $then $x=y$.
+     \item If $(x_n)$ converges, it is bounded.
+     \item If $\E \subset X$ and $x$ is a limit point of $E$, then $\exists$ a sequence in $(x_n) \subset E$ such that $x_n \rightarrow x$.
+ \end{enumerate}
+ 
+ \textbf{Example}\\
+ Take $\mathbb{R}, d_{disc}), d_{disc}(x,y) = 1 \text{ if } x \neq y \text{ or } 0 \text{ if } x=y$.\\
+ Consider $x_n = \frac{1}{n}.$\\
+ Note $d(x_n,0) = 1 \forall\; n$ . So $\{\frac{1}{x_n}\} \subset B_2(0),$ so ($x_n$) is bounded. But if $x\in \mathbb{R}, $ eventually, $x_n \neq x \forall\; n$, so ($d(x_n, x) = 1 \;\orall\;n.$ So $x_n \nrightarrow x\;\forall\;x\in\mathbb{R}$>
+
 \end{block}
 
 \end{document}

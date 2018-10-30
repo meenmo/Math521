@@ -101,9 +101,9 @@ $$f'(x)=\lim\limits_{h\to 0}\frac{f(x+h)-f(x)}{h}$$ is the {\sl derivative of $f
 \begin{enumerate}[label=(\roman*)]
     \item Exercise
     \item Consider $$\frac{(fg)(x+h)-(fg)(x)}{h} = \frac{f(x_h)-f(x))g(x_h)+f(x)(g(x+h)-g(x))}{h}$$
-    Note $$\frac{f(x+h)-f(x)}{h}\rightarrow f'(x)\text{as h goes to inf}$$
-    $$\frac{g(x+h)-g(x)}{h}\to g(x)\text{as h to 0}$$
-    $$g(x+h) \to g(x)\text{as $h\to 0$ as $g$ is continuous at $x$.}$$
+    Note $$\frac{f(x+h)-f(x)}{h}\xrightarrow{\text{$h\to\infty$}} f'(x)$$
+    $$\frac{g(x+h)-g(x)}{h}\xrightarrow{\text{$h\to 0$}}  g(x)$$
+    $$g(x+h) \xrightarrow{\text{$h\to 0$}} g(x)\text{ as $g$ is continuous at $x$.}$$
     So $$\frac{(fg)(x_h)-(fg)(x)}{h}\to f'(x)g(x)+g(x)g'(x).$$
     
     \item $$\frac{\left(\frac{f}{g}\right)(x+h)-\left(\frac{f}{g}\right)(x)}{h} = \frac{f(x+h)g(x)-f(x)g(x+h)}{hg(x+h)g(x)}$$
@@ -123,17 +123,41 @@ $$f'(x)=\lim\limits_{h\to 0}\frac{f(x+h)-f(x)}{h}$$ is the {\sl derivative of $f
 \end{block}
 
 \vspace{1\baselineskip}
-\begin{block}{\bf Example}\\ 
-Image
+\begin{block}{\bf Example}
+Let $g(x)=\begin{cases}
+x \sin\left(\frac{1}{x}\right),\;\;x\neq 0\\
+0,\qquad\quad\;\;\; x=0
+\end{cases}$
+$$\includegraphics[height=5cm, width=12cm]{Diff_1.jpeg}$$
+\begin{itemize}
+    \item For $x\neq 0,\; f'(x)=\sin\left(\frac{1}{x}\right)-\frac{1}{x}\cos\left(\frac{1}{x}\right)$.
+    \item At $x=0$,
+    $$\frac{f(h)-f(0)}{h}=\frac{h\sin\left(\frac{1}{h}\right)}{h}=\sin\left(\frac{1}{h}\right)=$$
+    which has no limit as $h\to 0$ (Exercise).
+    \item So $f$ is differentiable at all $x\neq 0$.
+\end{itemize}
 \end{block}
 
 \vspace{1\baselineskip}
 \begin{block}{\bf Example}\\ 
 
+\end{block}
+
+\begin{block}{\bf Example}
+Let $g(x)=\begin{cases}
+x^2 \sin\left(\frac{1}{x}\right),\;\;x\neq 0\\
+0,\qquad\quad\;\;\;\;\; x=0
+\end{cases}$
+\begin{itemize}
+    \item Now, if $x\neq 0,\;g'(x)=2x\sin\left(\frac{1}{x}\right)-\cos\left(\frac{1}{x}\right)$.
+    \item At $x=0$,
+    $$\left|\frac{g(0+h)-g(0)}{h}\right| = \left|\frac{h^2\sin\left(\frac{1}{n}\right)}{h}\right| = \left|h\sin\left(\frac{1}{n}\right)\right| \le |h| \to 0.    $$
+    \item So $g'(0)=0$.
+\end{itemize}
 \end{block}
 
 \vspace{1\baselineskip}
 \begin{block}{\bf Theorem}
-Let $f\colon(alb)\rightarrow\mathbb{R},\; f(x)\in(c,d),$ be differentiable at $x\in(a,b)$. Let $g\colon (c,d)\rightarrow\mathbb{R}$ be differentiable at $f(x).$ Then $g\circ f$ is differentiable at $x$ and $(g\circ x)=g'(f(x))f'(x)$ 
+Let $f\colon(a,b)\rightarrow\mathbb{R},\; f(x)\in(c,d),$ be differentiable at $x\in(a,b)$. Let $g\colon (c,d)\rightarrow\mathbb{R}$ be differentiable at $f(x).$ Then $g\circ f$ is differentiable at $x$ and $(g\circ x)=g'(f(x))f'(x)$ 
 \end{block}
 \end{document}

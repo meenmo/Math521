@@ -183,7 +183,10 @@ Let X,Y be metric spaces X compact, $f: X\rightarrow Y$ a continuous bijection. 
     \item Now $|f(x_1)-f(x_2)|=|\frac{1}{x_1-x_0}-\frac{1}{x_2-x_0}|=\frac{|x_2-x_1|}{|x_1-x_0||x_2-x_0|}\ge\frac{1}{\cancel{|x_1-x_0|}}\cdot \frac{\cancel{|x_1-x_0}}{2}\cdot|f(x_2)| = \frac{|f(x_2)|}{2}$
     \item As $x_2\to x_0,\; |f(x_2)|\to \infty$.
     \item So, take $x_2$ sufficiently close to $x_0,$ so that $|f(x_2)|\ge 2\epsilon$
-    \item Image\\
+    $$\includegraphics[height=2.5cm, width=12cm]{Oct26_image.jpeg}$$
+    \item i.e. $\exists\;x_2\in B_r(x_0)$
+    \item Then $|f(x_1)-f(x_2)| \ge \epsilon,$ but $|x_1-x_2|<2\delta$.
+    \item So $f$ is not uniformly continuous.\\
     
     \item Consider $g(x)=\frac{1}{1+(x-x_0)^2}$.
     \item So $\forall\;x\in E,\; |g(x)|<1$, $g$ is continuous and as $x\to x_0,\; g(x)\to k,$ so $\sup\{g(x)\;|\;x\inE\}=1,$ but supremum is not attained.
