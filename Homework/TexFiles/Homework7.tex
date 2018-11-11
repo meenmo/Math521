@@ -67,9 +67,9 @@ $$\{x\inX\;|\;f(x)=0\}$$ is closed.
     \item Suppose $g(f) = f^{-1}(\{0\})$. By the Corollary above, $g(f)$ is closed if $f$ is continuous.\\
     
     \item Let $x$ be a limit point of $g(f)$. Then $\exists$ a sequence $\{x_n\}$ in $g(f)$ such that $d(x_n,x)\rightarrow 0$.
-    \item $f$ is continuous at $x$. So $\exists\; \delta>0\;\;\forall \epsilon>0$ such that $d(x_n,x)<\delta \Leftrightarrow d(f(x_n)-f(x))<\epsilon$.
-    \item As $\{x_n\}$ converges to $x$, $\exists\; N$ such that $n\ge N$; hence $d(f(x_n)-f(x))<\epsilon$.
-    \item Since $f(x_0)=0,\; d(f(x_n)-f(x)) = d(f(x)) < \epsilon \;\;\forall\; \epsilon>0.$
+    \item $f$ is continuous at $x$. So $\exists\; \delta>0\;\;\forall \epsilon>0$ such that $d(x_n,x)<\delta \Leftrightarrow |f(x_n)-f(x)|<\epsilon$.
+    \item As $\{x_n\}$ converges to $x$, $\exists\; N$ such that $n\ge N$; hence $|f(x_n)-f(x)|<\epsilon$.
+    \item Since $f(x_0)=0,\; |f(x_n)-f(x)| = d(f(x)) < \epsilon \;\;\forall\; \epsilon>0.$
     \item This leads to $f(x) = 0$, or $x\in g(f)$, and $g(f)$ is, therefore, closed since it contains all its limit points.
     
 \end{itemize}
@@ -106,31 +106,63 @@ Let $E\subset X$ and define a function $f\colon X\rightarrow \mahttbb{R}$ by $$f
 Show that $f$ is Lipschitz, and hence continuous.
 \begin{itemize}
     \item Suppose $x,y\in X$. 
-    \item So $f(x) = \inf\{d(x,p)\;|\;p\in E\}\le d(x,p) \le d(x,y)+d(y,p).$
-    \item And the by definition of $f$, $f(y) = \inf\{d(y,p)\;|\;p\in E\}\le d(y,p).$
-    \item Then $f(x)-f(y) \le \{d(x,y)+d(y,p)\}-d(y,p) = d(x,y) \Leftrightarrow f(y)-f(x) \le d(y,x).$
-    \item Hence $|f(x)-f(y)| \le 1\cdot d(x,y)$.
-    \item The proper Lipschitz constant of $f$ which is 1, and its continuity are proved.
+    \item Let $p\in E$. So $f(x) = \inf\{d(x,p)\;|\;p\in E\}\le d(x,p) \le d(x,y)+d(y,p).$
+    \item $f(x)-d(x,y)\le \inf\{d(y,p)\;|\;p\in E\} = f(y) \Leftrightarrow f(x)-f(y)\le d(x,y)$
+    \item Since $f(y)-f(x)\le d(y,x)=d(x,y)$ also, we obtain $|f(x)-f(y)|\le 1\cdot d(x,y)$.
+    \item Thus $f$ is Lipschitz.
     
+    %\item Hence $|f(x)-f(y)| \le 1\cdot d(x,y)$.
+    %\item The proper Lipschitz constant of $f$ which is 1, and its continuity are proved.
 \end{itemize}
-
 
 \vspace{1.5\baselineskip}
 \textbf{Question 7.5}\\
 Let $K\subset X$ be compact and suppose that $x\in X\setminus K$. Prove that there exists a nearest point of $K$ to $x$, that is, that there exists $p\in K$ such that $d(x,p)\le d(x,q)$ for all $q\in K$.
-
+\begin{itemize}
+    \item The set $\{d(x,q)\;|\;q\in K\}$ is a non-empty subset of $(0,\infty)$.
+    \item So there exists the infumum and a sequence $q_n\in K$ such that 
+    $$d(x,q_n)\to D = \inf\{d(x,q)\;|\;q\in K\}$$
+    \item $\{q_n\}$ has a convergent subsequence $\{q_{n_k}\}$ since it is in a compact set.\\
+    {\sl (Note that a topological space is sequentially compact if every infinite sequence has a convergent subsequent.)}
+    \item Since $d(x,q_{n_k})$ also converges to $D$, we may just assume that $x_n\to q$ in $X$.
+    \item Since compact sets are closed, $p\in K$ and we just need to check that $d(x,p)=D$.
+    \item Put $\epsilon>0$. By the definition of infimum and the convergence of the distnace, $\exists\;n$ such that 
+    $$|d(q,q_n)-D| <\frac{\epsilon}{2}\;\;\&\;\; d(q_n,p)<\frac{\epsilon}{2}$$
+    Hence
+    $$|d(x,p)-D|<|d(x,p)-d(x,q_n)|+|d(x,q_n)-D|<\epsilon\; \text{  for any $\epsilon>0$}$$
+    \item Thus $d(x,p)=D$ as desired and the infimum of the distance is atained.
+\end{itemize}
 \vspace{1.5\baselineskip}
 \textbf{Question 7.6}\\
 Define the function $f\colon\mathbb{R}\rightarrow\mathbb{R}$ by $f(x)=\sqrt{|x|}$. Is $f$ Lipschitz?
 \begin{itemize}
-    \item Suppose that $x,y\in \mathbb{R}$. To prove whether $f$ is Lipschitz, we need to find a Lipschitz constant $C$ such that $d(\sqrt{x}-\sqrt{y})\le Cd(x,y)$ which holds on any interval.
-    \item Fix $y=0$. Then we obtain 
-    $$\frac{\sqrt{x}-\sqrt{0}}{|x-0|} = \frac{1}{\sqrt{x}} \le C <1$$
-    \item However, $1/\sqrt{x} < 1$ does not hold for all $x$. Thus $f$ is not Lipschitz.
+    \item Suppose that $x,y\in \mathbb{R}$. To prove whether $f$ is Lipschitz, we need to find a Lipschitz constant $C$ such that $|\sqrt{x}-\sqrt{y}|\le Cd(x,y)$ which holds on any interval.
+    \item Let $y=2x$. Then we obtain 
+    $$\frac{\sqrt{x}-\sqrt{2x}}{|x-2x|}=\frac{1}{\sqrt{x}}-\frac{\sqrt{2}}{\sqrt{x}}$$
+    \item However, in case where $x<0,\; C$ may go to negative. Thus $f$ is not Lipschitz.
 \end{itemize}
 \vspace{1.5\baselineskip}
 \textbf{Question 7.7}\\
-Let $f,g: X\rightarrow Y$ be continuous functions and suppose that $E\subset X$ is dense. Prove that $f(E)$ is dense in $f(X)$. Suppose now that $f(p) = g(p)$ for all $p\in E$. Prove that $f(x)=g(x)$ for all $x\in X$.
+Let $f,g: X\rightarrow Y$ be continuous functions and suppose that $E\subset X$ is dense. 
+\begin{enumerate}[label=(\roman*)]
+    \item Prove that $f(E)$ is dense in $f(X)$. 
+    \begin{itemize}
+        \item Let $y\in f(X)$. Hence $\exists\; x\in X$ such that $f(x)=y$.
+        \item Since $y\in f(X)$, $x$ is unable to be an element of $E$.\hfill i.e. $x$ is strictly in $X$.
+        \item Since $E$ is dense in $X,\; \exists$ a sequence $\{x_n\}\in E$ such that $x_n\to x$.
+        \item Further, due to continuity of $f$, $f(x_n)\to f(x)$.
+        \item However, this does not imply that $y=f(x)=f(x_n)$ because $y\notin f(E)$.
+        \item Hence we can conclude that $y=f(x)$ is a limit point of $f(E)$.
+    \end{itemize}
+    
+    \item Suppose now that $f(p) = g(p)$ for all $p\in E$. Prove that $f(x)=g(x)$ for all $x\in X$.
+    \begin{itemize}
+        \item Remind that $X=E\cup E^c$. What we need to show is that $f(p)=g(p)$ for every $p\in E^c$.
+        \item Since $E$ is dense in $X,\;\exists$ a sequence $\{p_n\}\in E$ such that $p_n \to p\in E^c$ as $n\to \infty$. 
+        \item Since $f(p_n)=g(p_n)$, where $p_n\in E$, $f$ and $g$ are continuous.
+        \item Thus $f(p)=g(p)$ holds.
+    \end{itemize}
+\end{enumerate}
 
 
 \end{document}

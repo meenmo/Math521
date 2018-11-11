@@ -1,0 +1,189 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[nouppercase,headsepline,footsepline,plainfootsepline]{scrpage2}
+\automark{section}
+\pagestyle{scrheadings}
+%\clearscrheadfoot
+\ihead{Midterm2 Review}
+%\ofoot[\pagemark]{\pagemark}% Optional argument controls chapter-starting pages
+\ifoot[(Author)]{{\sl \hfill Meenmo K.}}
+
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{cancel}
+\usepackage{tasks}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+\setlength{\parindent}{0pt}
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+ 
+\begin{document}
+\begin{section}{\bf $\limsup\;\&\;\liminf$}
+
+{\bf Definition} Let $(x_n)<\mathbb{R}$. Then $$\limsup\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty}(\sup\limits_{k\ge n} x_k)$$
+    $$\liminf\limits_{n\to\infty} x_n = \lim\limits_{n\to\infty}(\inf\limits_{k\ge n} x_k)$$
+    
+    Is it well-defined?    For $(x_n),$ define $M_n=\sup\limits_{k\ge n} x_k,\;\; m_n = \inf\limits_{k\ge n} x_k$\\
+    
+    {\sl Note.}
+    $$\sup\limits_{k\ge n+1} x_k \le \sup\limits_{k\ge n} x_k\;\;\forall\; n$$
+    So $M_n$ is monotone decreasing, hence either $$M_n=+\infty\;\;\forall\;n,\;\limsup\limits_{n\to\infty} x_n = +\infty$$
+    $$\text{ or } M_n\to x\in\mathbb{R}, \text{ or } M_n\to -\infty$$
+    In any case, $\limsup\limits_{n\to\infty} x_n  $ exists in $\overline{\mathbb{R}}$.
+    
+    \vspace{1\baselineskip}
+    {\bf Example} Let $x_n=(-1)^n +\frac{1}{n}.$ find $\limsup\limits_{n\to\infty} x_n,\; \liminf\limits_{n\to\infty} x_n$.
+    \begin{itemize}
+        \item Now $M_n = \sup\limtis_{k\gen} x_k = \begin{cases}
+        1+\frac{1}{n},\;\; \text{ n is even}\\
+        1+\frac{1}{n+1},\;\;\text{ n is odd }\end{cases}$
+        \item So $M_n\to 1,$ hence $\limsup\limits_{n\to\infty} x_n = 1$
+        \item Also $m_n = -1\;\;\forall\;n$ as $x_n > -1\;\;\forall\;n$ and $x_{2n+1}\to -1$.
+        \item $\liminf\limits_{n\to\infty} x_n =\lim m_n = -1$
+    \end{itemize}
+    
+    \vspace{1\baselineskip}
+    {\bf Theorem} Let $(x_n)\subset \mathbb{R},\; E=\{x\in\overline{\mathbb{R}}\;|\;\exists x_{n_k} \to x\}$.
+    \begin{itemize}
+        \item Then $\limsup\limits_{n\to\infty} x_n = \sup E\in E,\;\; \liminf\limits_{n\to\infty} x_n =\inf E\in E$.
+        \item Also if $x> \limsup\limits_{n\to\infty} x_n,\;\exists\; N\in\mathbb{N}$ such that $\forall\; n\ge N,\; x_n<x$.
+    \end{itemize}
+    
+    \vspace{1\baselineskip}
+    {\bf Theorem} $\lim x_n=x$ if and only if $\limsup x_n = \liminf x_n = x$.
+
+\section{Series}
+{\bf Definition} Let $(a_n)\subset\mathbb{R}$. The series $\sum\limits_{n=1}^\infty a_n$ converges if $\forall\;\epsilon>0,\;\exists\;N\in\mathbb{N}$ such that $\forall\; n\ge N,\;\left|\sum\limits_{k=1}^n a_k - s\right|<\epsilon$ for some $s\in \mathbb{R}$.\\
+    
+    From $\sum a_n$, we can reproduce $(a_n)$ by $a_n = \sum\limits_{k=1}^n a_k - \sum\limits_{k=1}^{n-1} a_k$.
+    
+    \vspace{1\baselineskip}
+    {\bf Theorem} If $\sum a_n$ converges, then $a_n\xrightarrow{n\to\infty} 0$.\\
+    
+    {\sl Note.} $a_n\to 0 \nRightarrow \sum a_n$ converges.\\
+    
+    {\bf Examples} $\frac{1}{n}\to 0,\;\sum \frac{1}{n}$ is divergent.
+    
+    
+    \begin{itemize}
+        \item Convergence\\
+        
+        {\bf Example}
+        \begin{itemize}
+            \item $\sum\limits_{n=1}^\infty \frac{1}{n^p}$ converges if and only if $p>1$.
+            \item $\sum\limits_{n=2}^\infty \frac{1}{n(\log n)^p}$ converges if and only if $p>1$.
+            \item $\sum\limits_{n=0}^\infty x^n$ converges if and only if $|x|<1$.
+        \end{itemize}
+        
+        \item Tests
+        \begin{itemize}
+            \item Comparison Test: Suppose $|x_n|\le y_n\;\;\forall\;n, \sum y_n$ converges. Then $\sum x_n$ converges.\\
+            
+            {\bf Example} $\sum\limits_{n=1}^\infty \frac{4n\log n)+2}{n^2(\log n)^3 +1}$
+            \begin{itemize}
+                \item Let $a_n = \frac{4n\log n+2}{n^2 (\log n)^3 +1}.$
+                \item For each $n$, consider $4n\log n +2 \le 6n\log n$ for $n\ge 3$.
+                \item So $|a_n|\le \frac{6n(\log n)}{n^2(\log n)^3} = \frac{6}{n(\log n)^2} = b_n\;\;\forall\;n\ge 3$.
+                \item As $\sum\limits_{n=3}^\infty b_n$ converges, by comparison test, $\sum\limits_{n=3}^\infty a_n$ converges
+                \item Hence $\sum\limits_{n=1}^\infty a_n$ converges.
+            \end{itemize}
+            
+            \item Ratio Test\\
+            Suppose $a_n\neq 0\;\;\forall\;n$.
+            \begin{itemize}
+                \item If $\limsup \left|\frac{a_{n+1}}{a_n}\right|<1,\;\sum a_n$ converges.
+                \item If$\left|\frac{a_{n+1}}{a_n}\right|\ge 1\;\;\forall\;n\ge N$. For some $N,\;\suma_n$ diverges.\\
+                
+                {\sl Note.} If $\limsup \left\|\frac{a_{n+1}}{a_n}\right| = 1$, we cannot conclude.
+            \end{itemize}
+            
+            \item Root Test: Let $\alpha = \limsup |a_n|.$
+            \begin{itemize}
+                \item If $\alpha<1,\; \sum a_n$ converges.
+                \item If $\alpha>1,\;\sum a_n$ diverges.
+                \item If $\alpha =1,$ cannot conclude.
+            \end{itemize}
+        \end{itemize}
+        
+        {\bf Example} $\sum x^n,$ i.e. $a_n = x^n$. Then $|a_n|^{\frac{1}{n}}=|x|$. \\
+        So
+        $$\limsup |a_n|^{\frac{1}{n}} < 1 \text{ if and only if } |x|<1, \text{ so if } |x|<1,\;\sum x^n \text{ converges.}$$
+        $$\limsup |a_n|^{\frac{1}{n}} > 1 \text{ if and only if } |x|>1, \text{ so if } |x|>1,\;\sum x^n \text{ diverges.}$$
+        $$\text{If $|x|=1$, root test is inconclusive.}$$
+        \item Using partial Sums\\
+        
+        {\bf Example} Suppose $\sum a_n$ converges, $\a_n\ge 0\;\;\;\forall\;n$. Show $\sum \frac{\sqrt{a_n}}{n}$ converges.
+        \begin{enumerate}[label=(\roman*)]
+            
+            \item Use Cauchy- inequality: $ab\le \frac{1}{2}(a^2+b^2)$.
+            \begin{itemize}
+                \item Then $\forall\;n,\;\frac{\sqrt{a_n}}{n}\le \frac{1}{2}(a_n+\frac{1}{n^2})$.
+                \item As $\sum a_n$ and $\sum \frac{1}{N^2}$ converges by comparison test, $\sum \frac{\sqrt{a_n}}{n}$ converges.
+                \item Cannot say $\sum\frac{\sqrt{a_n}}{n}\le \frac{1}{2}\sum(a_n+\frac{1}{n^2})$ until you have already shown $\sum\frac{\sqrt{a_n}}{n}$ converges.
+            \end{itemize}
+            
+            \item
+            \begin{itemize}
+                \item For $n\in \mathbb{N},\; \sum\limits{k=1}^n \frac{\sqrt{a_k}}{k}\le \left(\sum\limits{k=1}^n a_k\right)^{1/2} \left(\sum\limits{k=1}^n\frac{1}{k^2}\right)^{1/2}$ by c-s.
+                \item As $\frac{\sqrt{a_n}}{n}\ge 0\;\;\forall\;n,\; \sum\limits_{k=1}^n \frac{\sqrt{a_k}}{k} \le M,\; \sum\frac{\sqrt{a_n}}{n}$ converges.
+            \end{itemize}
+             
+        \end{enumerate}
+        
+        
+    \end{itemize}
+
+\section{Continuity}
+{\bf Definition} Let $f\colon\mathbb{R}\to\mathbb{R},\; a\in\mathbb{R}.$ Then $f$ is continuous at $a$ if $\forall\;\epsilon>0,\;\exists\;\delta>0$ such that $|x-a|<\delta,\;|f(x)-g(a)|<\epsilon$
+        
+\vspace{1\baselineskip}
+{\bf Definition} Let $f:X\to y,\; f$ is continuous at $a$ if $\forall\;\epsilon>0,\exists\;\delta >0$ such that $\forall\;x\in B_\delta (a),\;f(x)\in B_\epsilon (f(a))$
+
+\vspace{1\baselineskip}
+{\bf Theorem}
+Let $f\colon X\to Y.$ Then $f$ is continuous if and only if $f^{-1}(O)$ is open $\forall\;$oepn $O\subset Y,$ if and only if $f^{-1}(O)$ is closed $\forall$ closed $C\subset Y$.
+
+\vspace{1\baselineskip}
+{\bf Example} Let $f\colon X\to \mathbb{R}$ be continuous. Prove $G = \{x\in X\;|\; f(a)=0\}$ is closed.\\
+
+$G=f^{-1}(\{o\}).$ Now as $\{0\}$ is finite, it is closed. Hence $G = f^{-1}(\{0\})$ is closed.
+
+
+
+\end{section}
+\end{document}
